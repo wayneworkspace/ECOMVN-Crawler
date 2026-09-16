@@ -249,7 +249,7 @@ data/raw/                         bronze layer (not committed)     output/   Exc
 2. A settings class in `settings.py` and `configs/platforms/<name>/config.yaml`.
 3. Contract rules in `src/ecommerce/contracts/<name>.py` + a baseline.
 4. One entry in `platforms/__init__.py`. Styling in `configs/reports/default.yaml`.
-
+   
 Nothing else changes.
 
 ## Usage note
