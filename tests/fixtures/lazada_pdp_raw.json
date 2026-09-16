@@ -1,0 +1,164 @@
+{
+ "candidate": {
+  "item_id": "1230376943",
+  "sku_id": "4564299902",
+  "seller_id": "100200",
+  "name": "Dầu nhớt xe tay ga 800ml cao cấp 10W30 SL/MB 0.8l IDEMITSU thương hiệu Nhật Bản",
+  "page": 0,
+  "is_ad": false,
+  "search_rank": 3,
+  "basic": {
+   "itemId": "1230376943",
+   "name": "Dầu nhớt xe tay ga 800ml cao cấp 10W30 SL/MB 0.8l IDEMITSU thương hiệu Nhật Bản",
+   "price": "129000",
+   "priceShow": "129.000 ₫",
+   "originalPrice": "165000",
+   "discount": "22% Off",
+   "ratingScore": "4.8",
+   "review": "356",
+   "itemSoldCntShow": "Đã bán 1,2k",
+   "location": "Hồ Chí Minh",
+   "sellerName": "Idemitsu Official Store",
+   "brandName": "Idemitsu",
+   "image": "//img.lazcdn.com/a.jpg",
+   "itemUrl": "//www.lazada.vn/products/dau-nhot-i1230376943-s4564299902.html",
+   "sellerId": "100200"
+  }
+ },
+ "module_data": {
+  "data": {
+   "root": {
+    "fields": {
+     "primaryKey": {
+      "itemId": "1230376943",
+      "skuId": "4564299902"
+     },
+     "product": {
+      "title": "Dầu nhớt xe tay ga 800ml cao cấp 10W30 SL/MB 0.8l IDEMITSU thương hiệu Nhật Bản",
+      "brandName": "Idemitsu",
+      "itemId": "1230376943",
+      "highlights": "<ul><li>Nhớt bán tổng hợp</li><li>JASO MB, API SL</li></ul>",
+      "desc": "<p>Dầu nhớt xe tay ga Idemitsu 10W-30 nhập khẩu từ Nhật Bản.</p><p>Bảo hành 12 tháng</p>",
+      "soldCount": "1.2K"
+     },
+     "skuInfos": {
+      "4564299902": {
+       "skuId": "4564299902",
+       "stock": 57,
+       "image": "//img.lazcdn.com/a.jpg",
+       "price": {
+        "salePrice": {
+         "value": 129000,
+         "text": "129.000 ₫"
+        },
+        "originalPrice": {
+         "value": 165000,
+         "text": "165.000 ₫"
+        }
+       }
+      },
+      "4564299903": {
+       "skuId": "4564299903",
+       "stock": 0,
+       "price": {
+        "salePrice": {
+         "value": 245000
+        },
+        "originalPrice": {
+         "value": 300000
+        }
+       }
+      }
+     },
+     "productOption": {
+      "skuBase": {
+       "properties": [
+        {
+         "pid": "1",
+         "name": "Dung tích",
+         "values": [
+          {
+           "vid": "11",
+           "name": "0.8L",
+           "image": "//img.lazcdn.com/v1.jpg"
+          },
+          {
+           "vid": "12",
+           "name": "1.6L (2 chai)"
+          }
+         ]
+        }
+       ],
+       "skus": [
+        {
+         "skuId": "4564299902",
+         "propPath": "1:11"
+        },
+        {
+         "skuId": "4564299903",
+         "propPath": "1:12"
+        }
+       ]
+      }
+     },
+     "skuGalleries": {
+      "4564299902": [
+       {
+        "src": "//img.lazcdn.com/a.jpg"
+       },
+       {
+        "src": "//img.lazcdn.com/b.jpg"
+       }
+      ]
+     },
+     "review": {
+      "ratings": {
+       "average": 4.8,
+       "rateCount": 356,
+       "scores": [
+        300,
+        40,
+        10,
+        4,
+        2
+       ]
+      }
+     },
+     "seller": {
+      "name": "Idemitsu Official Store",
+      "sellerId": 100200,
+      "url": "//www.lazada.vn/shop/idemitsu",
+      "isLazMall": true
+     },
+     "sellerInfo": {
+      "positiveRating": 96,
+      "shipOnTime": 99,
+      "chatResponseRate": 92
+     },
+     "specifications": [
+      {
+       "features": {
+        "Thương hiệu": "Idemitsu",
+        "Dung tích": "800ml",
+        "Xuất xứ": "Nhật Bản"
+       }
+      }
+     ],
+     "breadcrumb": [
+      {
+       "title": "Ô tô - Xe máy"
+      },
+      {
+       "title": "Dầu nhớt xe máy"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "tracking_data": {
+  "pdt_item_id": "1230376943"
+ },
+ "title": "Dầu nhớt | Lazada.vn",
+ "scraped_at": "2026-09-14T10:00:00+00:00"
+}

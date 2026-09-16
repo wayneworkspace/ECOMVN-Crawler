@@ -1,0 +1,118 @@
+# Domain profile: insulated drinkware ("bình / ly / cốc / phích giữ nhiệt").
+#
+# A domain profile is OPTIONAL. It tells the pipeline which search results
+# belong to the product category and which attribute vocabularies to use when
+# extracting specs from free text. It never changes how a platform is crawled.
+#
+#   ecommerce crawl --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet
+#
+# Copy this file to create a profile for another category.
+name: giu_nhiet
+description: Insulated bottles, cups, mugs and flasks for drinks.
+
+filter:
+  # Rule: the FIRST product noun in the title decides. Longer phrases first so
+  # "bình sữa" beats "bình". Each entry is [regex, product type shown in Excel].
+  keep_nouns:
+    - ["bình ủ", "Bình"]
+    - ["bình sữa", "Bình sữa"]
+    - ["bình nước", "Bình"]
+    - ["bình giữ nhiệt", "Bình"]
+    - ["phích|phic|thermos", "Phích"]
+    - ["tumbler", "Ly (tumbler)"]
+    - ["bình|bottle", "Bình"]
+    - ["\\bly\\b|\\bcup\\b", "Ly"]
+    - ["cốc|\\bmug\\b", "Cốc"]
+    - ["\\bca\\b", "Ca"]
+    - ["tách", "Tách"]
+  drop_nouns:
+    # "hộp quà" (gift box) is packaging for a bottle, not a lunch box.
+    - ["hộp (?:đựng )?cơm|cặp lồng|cà mèn|camen|hộp (?:đựng )?thức ăn|\\bhộp\\b(?! quà| đựng quà| giấy)", "Hộp cơm / hộp đựng"]
+    # food jars are called "bình" too: "Bình ủ cháo", "Bình đựng thức ăn giữ nhiệt Elmich"
+    - ["(?:bình|hũ|lọ|cốc|ly) (?:ủ |đựng |giữ nhiệt đựng )?(?:thức ăn|cháo|cơm|súp|đồ ăn)|ủ cháo|nấu cháo", "Bình / hũ đựng thức ăn"]
+    - ["\\bnồi\\b|\\bchảo\\b|xoong", "Nồi"]
+    - ["\\btúi\\b|balo|ba lô|\\bbao\\b(?! da)", "Túi"]
+    - ["\\bthùng\\b", "Thùng"]
+    # \b keeps "áo" out of "báo nhiệt" and "tất" out of "tất cả".
+    - ["\\báo\\b|\\bquần\\b|\\btất\\b(?! cả)|\\bvớ\\b|\\bgăng\\b|\\bkhăn\\b|\\bmũ\\b|legging|đồ lót|bộ đồ", "Quần áo giữ nhiệt"]
+    - ["\\bchăn\\b|\\bmền\\b|\\bđệm\\b|\\bnệm\\b|\\bthảm\\b", "Chăn đệm"]
+    - ["\\bmáy\\b|ấm siêu tốc|ấm đun", "Máy / thiết bị điện"]
+    - ["miếng dán|túi chườm|\\bchườm\\b", "Miếng dán / túi chườm"]
+    - ["\\bmàng\\b|\\bbạt\\b|\\brèm\\b|tấm cách nhiệt|\\bxốp\\b", "Vật liệu cách nhiệt"]
+    - ["nắp (?:bình|ly|cốc)|ống hút thay|dây đeo bình|vỏ bọc|bao da|phụ kiện", "Phụ kiện"]
+    - ["\\bbát\\b|(?<!ô )\\btô\\b|\\bchén\\b|\\bkhay\\b|\\bđĩa\\b", "Bát đĩa"]
+    - ["\\blò\\b|\\bbếp\\b", "Bếp"]
+  # "tặng túi", "kèm 2 ống hút": the gift, not the product. Removed before the rule runs.
+  freebie_items: [túi, dây đeo, dây, nắp, ống hút, cọ, sticker, bao, hộp quà, khay, móc, charm, khăn, quai]
+  freebie_qualifiers: [vải, canvas, giữ nhiệt, xách, đựng bình, chống sốc, rửa]
+  # A title with no recognised noun is kept when it contains a volume ("Stanley Quencher 1.18L").
+  keep_if_capacity: true
+  keep_if_capacity_type: "Bình / ly (không rõ)"
+  keep_reason: "đồ uống"
+  # TikTok keyword pages return unrelated products: the title must mention the domain.
+  title_must_match: "giữ\\s*nhiệt|giu\\s*nhiet|giữ\\s*lạnh|giữ\\s*nóng"
+  title_must_match_platforms: [tiktok]
+  title_must_match_reason: "tên không chứa 'giữ nhiệt'"
+
+discovery:
+  tiktok:
+    # TikTok Shop web has no search box: the crawler walks /vn/k/<slug> pages and
+    # their "Related Searches". Only slugs matching include and not exclude are followed.
+    seed_slugs: [giu-nhiet, binh-giu-nhiet, ly-giu-nhiet, coc-giu-nhiet, binh-nuoc-giu-nhiet, bin-giu-nhiet]
+    slug_include: "giu-nhiet|giu-lanh|giu-nong"
+    slug_exclude: "(^|-)(ao|quan|tat|gang|hop-com|hop|tui|mieng|chan|dem|mu|man|set|om|non|khan|noi|chao|may|binh-sua)(-|$)"
+
+specs:
+  # Extractors to run (each is a module in ecommerce/transformation/specs/).
+  enabled: [capacity, materials, colors, size, weight, features, origin, warranty]
+  capacity:
+    # Drinkware lives between a shot glass and a 5 L jug; outside that range a
+    # match is a model number or a typo ("3000L").
+    min_ml: 50
+    max_ml: 6000
+  materials:
+    # [regex, canonical name] -- specific grades before generic ones.
+    vocabulary:
+      - ["(?:inox|sus|thép(?: không gỉ)?)\\s*-?\\s*316l?", "Inox 316"]
+      - ["(?:inox|sus|thép(?: không gỉ)?)\\s*-?\\s*304", "Inox 304"]
+      - ["(?:inox|sus|thép(?: không gỉ)?)\\s*-?\\s*201", "Inox 201"]
+      - ["thép không gỉ|stainless(?: steel)?|\\binox\\b", "Inox (không rõ mác)"]
+      - ["tritan", "Nhựa Tritan"]
+      - ["nhựa\\s*pp|\\bpp\\b", "Nhựa PP"]
+      - ["\\bpet\\b|nhựa pet", "Nhựa PET"]
+      - ["nhựa|plastic", "Nhựa"]
+      - ["thuỷ tinh|thủy tinh|\\bglass\\b", "Thủy tinh"]
+      - ["gốm sứ|tráng sứ|phủ sứ|lòng sứ|ruột sứ|lõi sứ|ceramic|\\bsứ\\b|\\bgốm\\b", "Gốm sứ"]
+      - ["titan(?:ium)?", "Titan"]
+      - ["\\bnhôm\\b|aluminium|aluminum", "Nhôm"]
+      - ["silicone?", "Silicone"]
+      - ["sơn tĩnh điện", "Sơn tĩnh điện"]
+      - ["mạ đồng|lớp đồng", "Mạ đồng"]
+    attribute_names: [Chất liệu, Chất liệu chính, Material, Materials, Chất liệu chai, Vật liệu, Chất liệu cốc, Chất liệu ly]
+    inner_attribute_names: [Chất liệu ruột, Chất liệu bên trong, Chất liệu lòng, Inner Material]
+    outer_attribute_names: [Chất liệu vỏ, Chất liệu bên ngoài, Outer Material]
+  features:
+    hot_hours: true      # "giữ nóng 12 giờ" -> "Giữ nóng 12h"
+    cold_hours: true
+    flags:
+      - ["hiển thị nhiệt độ|màn hình led|đèn led|cảm (?:biến|ứng) nhiệt|báo nhiệt", "Hiển thị nhiệt độ"]
+      - ["ống hút|with straw|\\bstraw\\b", "Có ống hút"]
+      - ["chống (?:tràn|rò|rỉ|đổ)|chống rò rỉ|kín nước|leak[- ]?proof", "Chống tràn"]
+      - ["quai (?:xách|cầm)|tay cầm|dây (?:đeo|xách)|\\bquai\\b|with handle", "Có quai / tay cầm"]
+      - ["nắp bật|nút bấm|bật nắp", "Nắp bật"]
+      - ["lõi lọc|lọc trà|lưới lọc|ngăn lọc|lọc bã", "Có lọc trà"]
+      - ["bpa[ -]?free|không (?:chứa )?bpa", "Không BPA"]
+      - ["khắc (?:tên|laser|chữ)|in tên|in logo|custom product: yes", "Khắc / in tên"]
+      - ["chân không", "Cách nhiệt chân không"]
+      - ["(?:2|hai) lớp", "2 lớp"]
+      - ["(?:3|ba) lớp", "3 lớp"]
+      - ["chống trượt|đế silicone?", "Đế chống trượt"]
+      - ["xe hơi|ô tô|oto|hộc xe", "Vừa hộc để cốc ô tô"]
+      - ["máy rửa bát|máy rửa chén|dishwasher", "Dùng được máy rửa bát"]
+      - ["(?:có )?vạch chia|vạch đo", "Có vạch chia"]
+      - ["túi (?:đựng|bọc)|kèm túi|tặng túi", "Kèm túi đựng"]
+
+report:
+  # Wording for the Excel "Thông tin" sheet and the output file name.
+  filter_description: "Chỉ giữ bình / ly / cốc / phích đựng đồ uống"
+  file_prefix: giu_nhiet

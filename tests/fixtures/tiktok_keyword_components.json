@@ -1,0 +1,257 @@
+[
+ {
+  "component_type": "user_info",
+  "component_name": "user_info",
+  "fe_config": {}
+ },
+ {
+  "component_type": "feed_list",
+  "component_name": "feed_list_search_word",
+  "component_data": {
+   "products": [
+    {
+     "product_id": "1",
+     "title": "Bình giữ nhiệt LocknLock Metro 500ml",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/1",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/1~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "1",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 59960
+     },
+     "seller_info": {
+      "seller_id": "10",
+      "shop_name": "Shop 10"
+     },
+     "brand_info": {
+      "brand_name": "LocknLock"
+     },
+     "sku_info": []
+    },
+    {
+     "product_id": "2",
+     "title": "Áo giữ nhiệt nam cổ cao",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/2",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/2~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "2",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 1006529
+     },
+     "seller_info": {
+      "seller_id": "1",
+      "shop_name": "Shop 1"
+     },
+     "brand_info": {},
+     "sku_info": []
+    },
+    {
+     "product_id": "3",
+     "title": "Hộp cơm giữ nhiệt inox 3 tầng",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/3",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/3~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "3",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 5000
+     },
+     "seller_info": {
+      "seller_id": "1",
+      "shop_name": "Shop 1"
+     },
+     "brand_info": {},
+     "sku_info": []
+    },
+    {
+     "product_id": "4",
+     "title": "Ly giữ nhiệt Candy 710ml có ống hút",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/4",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/4~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "4",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 425761
+     },
+     "seller_info": {
+      "seller_id": "11",
+      "shop_name": "Shop 11"
+     },
+     "brand_info": {},
+     "sku_info": []
+    },
+    {
+     "product_id": "5",
+     "title": "Bình nước thể thao 1 lít",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/5",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/5~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "5",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 90000
+     },
+     "seller_info": {
+      "seller_id": "1",
+      "shop_name": "Shop 1"
+     },
+     "brand_info": {},
+     "sku_info": []
+    },
+    {
+     "product_id": "6",
+     "title": "Cốc giữ nhiệt văn phòng 450ml",
+     "image": {
+      "height": 800,
+      "width": 800,
+      "uri": "tos/6",
+      "url_list": [
+       "https://p16-oec-va.ibyteimg.com/tos/6~tplv-o3syd03w52-crop-webp:800:800.webp?dr=15592&t=555f072d"
+      ]
+     },
+     "product_price_info": {
+      "sku_id": "6",
+      "currency_name": "VND",
+      "sale_price_decimal": "100000",
+      "origin_price_decimal": "150000",
+      "sale_price_format": "100.000",
+      "discount_decimal": "0.33",
+      "discount_format": "33%"
+     },
+     "rate_info": {
+      "score": 4.8,
+      "review_count": "10"
+     },
+     "sold_info": {
+      "sold_count": 800
+     },
+     "seller_info": {
+      "seller_id": "1",
+      "shop_name": "Shop 1"
+     },
+     "brand_info": {},
+     "sku_info": []
+    }
+   ],
+   "has_more": false,
+   "load_more_params": {
+    "offset": 0
+   }
+  }
+ },
+ {
+  "component_type": "related_link",
+  "component_name": "related_link_search_words",
+  "component_data": {
+   "related_links": [
+    {
+     "link": "https://shop.tiktok.com/vn/k/giu-nhiet-om",
+     "name": "Giữ nhiệt ôm"
+    },
+    {
+     "link": "https://shop.tiktok.com/vn/k/binh-giu-nhiet-mini",
+     "name": "Bình giữ nhiệt mini"
+    },
+    {
+     "link": "https://shop.tiktok.com/vn/k/ao-giu-nhiet",
+     "name": "áo giữ nhiệt"
+    }
+   ]
+  }
+ },
+ {
+  "component_type": "related_link",
+  "component_name": "related_link_categories",
+  "component_data": {
+   "related_links": [
+    {
+     "link": "https://shop.tiktok.com/vn/c/vacuum-flasks/600032",
+     "name": "Vacuum Flasks"
+    }
+   ]
+  }
+ }
+]

@@ -1,0 +1,54 @@
+# Shopee Việt Nam (shopee.vn). Platform-specific settings only; the keyword is a
+# run-time input and the product filter is a domain profile.
+platform: shopee
+
+# "Bán chạy" order in the Shopee UI (sortBy=sales).
+sort_by: sales
+# Products wanted in the final dataset (after the domain filter). --max-products overrides it.
+target: 200
+# Crawl a few extra candidates to cover products that fail or get dropped at the detail step.
+buffer_ratio: 0.15
+# Shopee returns 60 products per page and rarely shows more than ~17 pages.
+max_pages: 10
+# Sponsored products (adsid) appear in the results even when sorted by sales.
+# false = not counted in the ranking: their position is bought, not earned.
+include_ads: false
+# Per-SKU stock: select every variation combination and read "N pieces available"
+# on the page (~1 s per SKU, ~24 SKUs per product on average -> +30 s per product).
+sku_stock: true
+# Click budget per product (a 90-SKU product stops here; remaining SKUs stay blank).
+sku_stock_max_clicks: 40
+
+browser:
+  # chrome or edge (both Chromium). Changing the browser changes the profile too
+  # (Chrome and Edge profiles are not interchangeable): run `ecommerce login` again.
+  # 11/09: Shopee moved to Edge (the old Chrome profile was blocked constantly).
+  name: edge
+  # The tool's own profile, logged in once with `ecommerce login --platform shopee`.
+  profile_dir: ".browser_profile/shopee_edge"
+  headless: false
+  # attach = the tool starts a PLAIN browser and only attaches to it (no automation flags).
+  #          11/09: a browser *launched* by patchright gets a blank captcha widget on
+  #          both Shopee and TikTok -> a person cannot solve it. attach fixes this.
+  # launch = the old way (patchright launch_persistent_context).
+  mode: attach
+
+pacing:
+  # Real run 10/09: Shopee blocked traffic (/verify/traffic) after ~25 products in
+  # ~15 minutes. 11/09: every pause lengthened (not being blocked beats speed).
+  # Random pause between two product pages (seconds).
+  delay_min_s: 20
+  delay_max_s: 45
+  # Every N products, a long break.
+  long_break_every: 8
+  long_break_min_s: 240
+  long_break_max_s: 480
+  # Every N products, a full cooldown (0 = off).
+  cooldown_every: 24        # 13/09: 16 -> 24 products, saves ~1.7 h of waiting. Blocked often? back to 16
+  cooldown_min_s: 1200
+  cooldown_max_s: 1800
+  # Still hitting /verify/traffic: sleep 60, 120, 180, 240 minutes then retry; give up after max.
+  block_cooldown_min: 60
+  max_block_cooldowns: 4
+  # Attempts per product before skipping it.
+  max_attempts: 2

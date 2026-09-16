@@ -1,0 +1,32 @@
+# Lazada Việt Nam (lazada.vn). Search page sorted by "Bán chạy" (sort=popularity),
+# product pages read from the JSON embedded in the HTML (window.__moduleData__).
+platform: lazada
+
+sort_by: popularity
+# Products wanted in the final dataset (after the domain filter). --max-products overrides it.
+target: 200
+buffer_ratio: 0.2
+# ~40 products per search page.
+max_pages: 8
+# Sponsored cards are not counted in the ranking.
+include_ads: false
+
+browser:
+  name: edge
+  # Log in once: `ecommerce login --platform lazada` (fewer captchas, full prices).
+  profile_dir: ".browser_profile/lazada_edge"
+  headless: false
+  mode: attach
+
+pacing:
+  # Product pages are fetched by XHR from the search tab (light), so pauses are
+  # shorter than Shopee's. Raise them if the slider captcha shows up often.
+  delay_min_s: 8
+  delay_max_s: 20
+  long_break_every: 15
+  long_break_min_s: 90
+  long_break_max_s: 180
+  cooldown_every: 0
+  block_cooldown_min: 30
+  max_block_cooldowns: 4
+  max_attempts: 2

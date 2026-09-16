@@ -1,0 +1,215 @@
+{
+ "error": null,
+ "total_count": 5000,
+ "nomore": false,
+ "items": [
+  {
+   "item_basic": {
+    "itemid": 111,
+    "shopid": 11,
+    "name": "Bình giữ nhiệt Lock&Lock 500ml ruột inox 316",
+    "image": "img111a",
+    "images": [
+     "img111a",
+     "img111b"
+    ],
+    "price": 25000000000,
+    "price_min": 25000000000,
+    "price_max": 25000000000,
+    "price_before_discount": 31250000000,
+    "raw_discount": 20,
+    "sold": 1200,
+    "historical_sold": 35000,
+    "stock": 500,
+    "shop_location": "Hà Nội",
+    "item_rating": {
+     "rating_star": 4.8,
+     "rating_count": [
+      100,
+      1,
+      2,
+      3,
+      14,
+      80
+     ]
+    },
+    "ctime": 1754464878,
+    "show_free_shipping": true,
+    "liked_count": 321,
+    "brand": "",
+    "is_official_shop": false,
+    "shopee_verified": true
+   },
+   "adsid": null,
+   "itemid": 111,
+   "shopid": 11
+  },
+  {
+   "item_basic": {
+    "itemid": 222,
+    "shopid": 22,
+    "name": "Ly giữ nhiệt quảng cáo 900ml",
+    "image": "img222a",
+    "images": [
+     "img222a",
+     "img222b"
+    ],
+    "price": 9900000000,
+    "price_min": 9900000000,
+    "price_max": 9900000000,
+    "price_before_discount": 12375000000,
+    "raw_discount": 20,
+    "sold": 50,
+    "historical_sold": 900,
+    "stock": 500,
+    "shop_location": "Hà Nội",
+    "item_rating": {
+     "rating_star": 4.8,
+     "rating_count": [
+      100,
+      1,
+      2,
+      3,
+      14,
+      80
+     ]
+    },
+    "ctime": 1754464878,
+    "show_free_shipping": true,
+    "liked_count": 321,
+    "brand": "",
+    "is_official_shop": false,
+    "shopee_verified": true
+   },
+   "adsid": 98765,
+   "itemid": 222,
+   "shopid": 22
+  },
+  {
+   "item_basic": {
+    "itemid": 333,
+    "shopid": 33,
+    "name": "Hộp cơm giữ nhiệt 3 tầng kèm túi",
+    "image": "img333a",
+    "images": [
+     "img333a",
+     "img333b"
+    ],
+    "price": 18000000000,
+    "price_min": 18000000000,
+    "price_max": 18000000000,
+    "price_before_discount": 22500000000,
+    "raw_discount": 20,
+    "sold": 800,
+    "historical_sold": 20000,
+    "stock": 500,
+    "shop_location": "Hà Nội",
+    "item_rating": {
+     "rating_star": 4.8,
+     "rating_count": [
+      100,
+      1,
+      2,
+      3,
+      14,
+      80
+     ]
+    },
+    "ctime": 1754464878,
+    "show_free_shipping": true,
+    "liked_count": 321,
+    "brand": "",
+    "is_official_shop": false,
+    "shopee_verified": true
+   },
+   "adsid": null,
+   "itemid": 333,
+   "shopid": 33
+  },
+  {
+   "item_basic": {
+    "itemid": 444,
+    "shopid": 44,
+    "name": "Cốc giữ nhiệt có ống hút 600ml hiển thị nhiệt độ",
+    "image": "img444a",
+    "images": [
+     "img444a",
+     "img444b"
+    ],
+    "price": 8900000000,
+    "price_min": 8900000000,
+    "price_max": 8900000000,
+    "price_before_discount": 11125000000,
+    "raw_discount": 20,
+    "sold": 3000,
+    "historical_sold": 50000,
+    "stock": 500,
+    "shop_location": "Hà Nội",
+    "item_rating": {
+     "rating_star": 4.8,
+     "rating_count": [
+      100,
+      1,
+      2,
+      3,
+      14,
+      80
+     ]
+    },
+    "ctime": 1754464878,
+    "show_free_shipping": true,
+    "liked_count": 321,
+    "brand": "",
+    "is_official_shop": false,
+    "shopee_verified": true,
+    "bundle_deal_info": {
+     "bundle_deal_label": "Mua 2 giảm 5%"
+    }
+   },
+   "adsid": null,
+   "itemid": 444,
+   "shopid": 44
+  },
+  {
+   "item_basic": {
+    "itemid": 111,
+    "shopid": 11,
+    "name": "Bình giữ nhiệt Lock&Lock 500ml ruột inox 316",
+    "image": "img111a",
+    "images": [
+     "img111a",
+     "img111b"
+    ],
+    "price": 25000000000,
+    "price_min": 25000000000,
+    "price_max": 25000000000,
+    "price_before_discount": 31250000000,
+    "raw_discount": 20,
+    "sold": 1200,
+    "historical_sold": 35000,
+    "stock": 500,
+    "shop_location": "Hà Nội",
+    "item_rating": {
+     "rating_star": 4.8,
+     "rating_count": [
+      100,
+      1,
+      2,
+      3,
+      14,
+      80
+     ]
+    },
+    "ctime": 1754464878,
+    "show_free_shipping": true,
+    "liked_count": 321,
+    "brand": "",
+    "is_official_shop": false,
+    "shopee_verified": true
+   },
+   "adsid": null,
+   "itemid": 111,
+   "shopid": 11
+  }
+ ]
+}

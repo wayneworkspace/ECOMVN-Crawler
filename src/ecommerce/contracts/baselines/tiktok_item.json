@@ -1,0 +1,2709 @@
+{
+ "platform": "tiktok",
+ "kind": "item",
+ "made_from": "tiktok/20260911",
+ "made_at": "2026-09-13T16:07:32",
+ "files": 40,
+ "rules": {
+  "Khối dữ liệu sản phẩm": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Tên sản phẩm": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Giá bán": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Đã bán (tổng)": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Phân loại (SKU)": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Tồn kho từng SKU": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Tình trạng còn / hết hàng": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Khuyến mãi": {
+   "coverage": 1.0,
+   "primary": 0.4
+  },
+  "Thương hiệu": {
+   "coverage": 0.525,
+   "primary": 1.0
+  },
+  "Bảng thuộc tính shop khai": {
+   "coverage": 0.95,
+   "primary": 1.0
+  },
+  "Giá gốc (trước giảm)": {
+   "coverage": 0.95,
+   "primary": 1.0
+  },
+  "Tên phân loại của SKU": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Nhóm phân loại": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Điểm đánh giá": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Số lượt đánh giá": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Phân bố sao (1-5)": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Tên shop": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Tỉ lệ phản hồi shop": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Ảnh sản phẩm": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Mô tả": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Bảng thuộc tính": {
+   "coverage": 0.95,
+   "primary": 1.0
+  },
+  "Danh mục": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Video": {
+   "coverage": 0.525,
+   "primary": 1.0
+  }
+ },
+ "structure": {
+  "candidate": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "candidate.brand": {
+   "share": 0.525,
+   "types": [
+    "text"
+   ]
+  },
+  "candidate.image": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "candidate.listing_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.listing_sold": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "candidate.pool_rank": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.product_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.product_type": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "candidate.rating": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.seen_on": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.seller_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.shop_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "candidate.source_page": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.source_pos": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "candidate.source_slug": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.categories": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.categories[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.categories[].category_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.categories[].category_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.categories[].is_leaf": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.categories[].level": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.categories[].name_key": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.categories[].parent_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.error_code": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.error_message": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.availability_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.availability_model.reason": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.base_resp": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.base_resp.StatusCode": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.base_resp.StatusMessage": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.aging_display_status": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.cod_available": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.cod_max_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.currency": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.cutoff_max_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.cutoff_min_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.delivery_max_days": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.delivery_max_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.delivery_min_days": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.delivery_min_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.extra_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.extra_info.*": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillable": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan.fulfillment_snapshot": {
+   "share": 0.975,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan.fulfillment_snapshot.network_biz_version_code": {
+   "share": 0.975,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan.promise_edt": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan.promise_edt.delivery_max_day": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_plan.promise_edt.delivery_min_day": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_snapshot": {
+   "share": 0.975,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.fulfillment_snapshot.network_biz_version_code": {
+   "share": 0.975,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.leadtime_display_strategy": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.leadtime_display_strategy.display_edt": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_identity": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.booking_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.delivery_option": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.display_starling_key": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.fulfill_solution": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.level": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.party": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.service_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.service_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.trackingMode": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.logistics_service.transportType": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].category_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].category_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].currency": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_raw_data": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_raw_data.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_raw_data.length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_raw_data.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_raw_data.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_v2": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_v2.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_v2.length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_v2.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].dimension_v2.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].order_line_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].product_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].shipping_fee": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].sku_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].sub_fulfill_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_raw_data": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_raw_data.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_raw_data.weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_v2": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_v2.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].weight_v2.weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.reachable_item_list[].width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.logistic_model.pkg_of_service.*.shipping_fee": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.biz_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.description": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.images": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.images[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.images[].height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.images[].uri": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.images[].url_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.images[].url_list[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.images[].width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.product_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties": {
+   "share": 0.95,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[]": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].has_image": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_id": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.binding_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.customs_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.gne_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.hide_c_side_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.key_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.legal_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.logistics_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.non_merchant_filled": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.shopping_guide_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_label.spu_same_product_property": {
+   "share": 0.95,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_name": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_values": {
+   "share": 0.95,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_values[]": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_values[].property_value_id": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.product_properties[].property_values[].property_value_name": {
+   "share": 0.95,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].has_image": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.binding_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.customs_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.gne_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.hide_c_side_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.key_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.legal_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.logistics_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.non_merchant_filled": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.shopping_guide_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_label.spu_same_product_property": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].image": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].image.height": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].image.uri": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].image.url_list": {
+   "share": 0.95,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].image.width": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].property_value_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sale_properties[].property_values[].property_value_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.seller_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*.height": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*.uri": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*.url_list": {
+   "share": 0.95,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*.url_list[]": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.sku_property_image_map.*.width": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.skus[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].app_to_sku_status": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].app_to_sku_status.*": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension.length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension_v2": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension_v2.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension_v2.length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension_v2.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].dimension_v2.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].is_pre_order": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].package_height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].package_length": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].package_weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].package_width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].pre_order_ship_day": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs[].sku_property_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs[].sku_property_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs[].sku_property_value_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].property_pairs[].sku_property_value_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_image": {
+   "share": 0.95,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_image.height": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_image.image_source": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_image.uri": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_image.width": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_name": {
+   "share": 0.55,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_quantity": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_quantity.available_quantity": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_quantity.warehouse_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_status": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_stock_status": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].sku_transparent_field": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].support_sale_formats": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].support_sale_formats[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight.weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight_v2": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight_v2.unit": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.skus[].weight_v2.weight": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.sold_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.product_model.videos": {
+   "share": 0.525,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].deliveryName": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].deliveryOption": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].event_tracking": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].event_tracking.shipping_type": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].freeShipping": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].isDefault": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].logisticText": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].logisticsServiceId": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].shippingFee": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].shippingFee.currency": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].shippingFee.origin_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].shippingFee.real_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_logistic_list[].shippingFee.real_price_desc": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.currency_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.currency_show_mode": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.currency_symbol": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.discount_decimal": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.discount_format": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.origin_price_decimal": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.origin_price_format": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.promotion_deduction_details": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.promotion_deduction_details.seller_subtotal_deduction": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.promotion_deduction_details.seller_subtotal_deduction_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.raw_origin_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.raw_origin_price_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.reduce_price_format": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.sale_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.sale_price_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.sale_price_integer_part_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.show_currency_space": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.single_product_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.single_product_price_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.sku_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.min_price.symbol_position": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price": {
+   "share": 0.675,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.currency_name": {
+   "share": 0.675,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.currency_show_mode": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.currency_symbol": {
+   "share": 0.675,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.discount_txt": {
+   "share": 0.65,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.max_discount_decimal": {
+   "share": 0.65,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.max_price_integer_part_format": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.max_price_sku_id": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.min_price_integer_part_format": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.min_price_sku_id": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.origin_range_price": {
+   "share": 0.65,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.range_price": {
+   "share": 0.675,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.show_currency_space": {
+   "share": 0.675,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.range_price.symbol_position": {
+   "share": 0.675,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.currency_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.currency_show_mode": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.currency_symbol": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.discount_decimal": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.discount_format": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.origin_price_decimal": {
+   "share": 0.95,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.origin_price_format": {
+   "share": 0.95,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.promotion_deduction_details": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.promotion_deduction_details.seller_subtotal_deduction": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.promotion_deduction_details.seller_subtotal_deduction_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.raw_origin_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.raw_origin_price_format": {
+   "share": 1.0,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.reduce_price_format": {
+   "share": 0.95,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.sale_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.sale_price_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.sale_price_integer_part_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.show_currency_space": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.single_product_price_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.single_product_price_format": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.sku_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.promotion_model.promotion_product_price.skus_price.*.symbol_position": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.review_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.review_model.product_overall_score": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.review_model.product_review_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.safety_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.seller_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo.uri": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo.url_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo.url_list[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_logo.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.product_info.seller_model.shop_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.user_rights_model": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.user_rights_model.return_policies": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.product_info.user_rights_model.return_policies[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.product_info.user_rights_model.return_policies[].description": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.product_info.user_rights_model.return_policies[].title": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[]": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].countdown": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].countdown.end_time": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].countdown.start_time": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].da_info": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].default_style": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].feature": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].feature[]": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].feature[].property_name": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].feature[].property_value": {
+   "share": 0.4,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon.height": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon.uri": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon.url_list": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon.url_list[]": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.dark_icon.width": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon.height": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon.uri": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon.url_list": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon.url_list[]": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].icon.light_icon.width": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].id": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].is_show_icon": {
+   "share": 0.4,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].status": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].text": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels.*[].type": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[]": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].divider": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].divider.styles": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[]": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom.children": {
+   "share": 0.4,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom.click_event": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom.hidden": {
+   "share": 0.4,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom.styles": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].lom.type": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].meta": {
+   "share": 0.4,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].meta.da_info": {
+   "share": 0.4,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].meta.label_style_id": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].labels[].meta.label_type": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.promotion_tag.placement_labels_ui.ui_list[].placement": {
+   "share": 0.4,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.review_info.has_more": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.review_info.product_reviews": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.review_info.product_reviews[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.review_info.product_reviews[].display_image_url": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].is_incentivized_review": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.review_info.product_reviews[].is_verified_purchase": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.review_info.product_reviews[].product_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].product_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_country": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_images": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_images[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_rating": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].review_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].reviewer_avatar_url": {
+   "share": 0.975,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].reviewer_id": {
+   "share": 0.975,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].reviewer_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.product_reviews[].sku_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.product_reviews[].sku_specification": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.review_info.review_ratings": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.review_info.review_ratings.overall_score": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.review_ratings.rating_result": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.review_info.review_ratings.rating_result.*": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.review_ratings.review_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.review_info.total_reviews": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.shop_info.background": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.shop_info.background.image": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.shop_info.background.image.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.background.image.uri": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.background.image.url_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.shop_info.background.image.url_list[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.background.image.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.background.is_default": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.shop_info.background.shop_background_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.best_rating": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.creator_name": {
+   "share": 0.975,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.desc": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.display_on_sell_product_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.enable_follow": {
+   "share": 0.975,
+   "types": [
+    "bool"
+   ]
+  },
+  "product_info.shop_info.followers_count": {
+   "share": 0.975,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.format_followers_count": {
+   "share": 0.975,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.format_global_sold_count": {
+   "share": 0.9,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.shop_info.format_sold_count": {
+   "share": 0.9,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "product_info.shop_info.format_video_count": {
+   "share": 0.925,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.global_seller_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.global_sold_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.on_sell_product_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.rate_display_style": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.region": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.review_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.seller_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.shop_link": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.shop_logo": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.shop_info.shop_logo.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.shop_logo.uri": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.shop_logo.url_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.shop_info.shop_logo.url_list[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.shop_logo.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.shop_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "product_info.shop_info.shop_rating": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.sold_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.store_sub_score": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[].high_light_tag": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[].platform_rate_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[].score": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[].score_percentage": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.store_sub_score[].type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.video_count": {
+   "share": 0.975,
+   "types": [
+    "number"
+   ]
+  },
+  "product_info.shop_info.worst_rating": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "route": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "scraped_at": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  }
+ }
+}

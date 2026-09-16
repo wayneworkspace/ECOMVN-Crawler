@@ -1,0 +1,110 @@
+# Domain profile: motorcycle engine oil ("dầu nhớt xe máy").
+#
+#   ecommerce crawl --platform shopee --keyword "dầu nhớt xe máy" --domain dau_nhot_xe_may
+#
+# Keeps engine oil / gear oil for motorbikes; drops accessories the keyword also
+# returns (filters, funnels, oil pumps, car oil, cleaning kits, stickers...).
+name: dau_nhot_xe_may
+description: Engine oil and gear oil for motorcycles and scooters.
+
+filter:
+  # The FIRST product noun in the title decides. [regex, product type shown in Excel]
+  keep_nouns:
+    - ["nhớt hộp số|dầu hộp số|nhớt láp|dầu láp|gear oil", "Nhớt hộp số / láp"]
+    - ["nhớt (?:xe )?tay ga|dầu (?:xe )?tay ga", "Nhớt xe tay ga"]
+    - ["nhớt (?:xe )?số|nhớt côn tay", "Nhớt xe số / côn tay"]
+    - ["nhớt phuộc|dầu phuộc|fork oil", "Dầu phuộc"]
+    - ["dầu nhớt|dầu nhờn|dầu động cơ|dầu máy|engine oil|motor oil", "Dầu nhớt động cơ"]
+    - ["\\bnhớt\\b", "Dầu nhớt"]
+    - ["\\bdầu\\b(?! (?:gió|thắng|phanh|ăn|dừa|gội|xả|thơm|tràm|nóng|massage|bôi trơn xích|xích))", "Dầu nhớt"]
+    # No noun at all but a viscosity grade ("Motul 7100 10W40 1L", "Power 1 10w40"): still engine oil.
+    - ["\\b\\d{1,2}w[- ]?\\d{2}\\b", "Dầu nhớt (theo cấp nhớt)"]
+  drop_nouns:
+    - ["lọc nhớt|lọc dầu|lọc gió|oil filter", "Lọc nhớt / lọc gió"]
+    - ["phễu|ca đong|bình đong|ống đong|xi lanh (?:hút|rút)", "Dụng cụ châm nhớt"]
+    - ["bơm (?:hút )?nhớt|máy hút nhớt|dụng cụ (?:thay|hút)", "Bơm / dụng cụ thay nhớt"]
+    - ["ốc xả nhớt|nắp châm nhớt|que thăm|ron|gioăng|phốt", "Phụ tùng"]
+    - ["dầu thắng|dầu phanh|nước làm mát|dầu gió|dầu xích|xịt sên|xịt xích|dưỡng sên", "Dầu thắng / xích / khác"]
+    # "Dầu nhớt ô tô ..." starts at the same position as the keep noun; the longer match wins -> drop.
+    - ["(?:dầu|nhớt)[^,.|]{0,30}?(?:ô ?tô|xe hơi|xe ôtô|xe tải)|nhớt ô ?tô|dầu ô ?tô|xe hơi", "Nhớt ô tô"]
+    - ["tem|decal|sticker|móc khóa|áo|găng|khăn|bao tay", "Phụ kiện khác"]
+    - ["máy cắt cỏ|máy phát điện|máy bơm|tàu|thuyền|xe đạp|xe điện|máy xúc|xe nâng|thủy lực|hydraulic", "Không phải xe máy"]
+    # Seen 14/09 in real results: additives, cleaners, fragrance, oil cans, household oil, oil catch cans
+    - ["phụ gia|súc béc|kim phun|làm sạch|vệ sinh|dưỡng|tinh dầu|nhớt thơm|dầu thơm|chống gỉ|anti-rust", "Phụ gia / vệ sinh / khác"]
+    - ["bẫy nhớt|vịt dầu|bình châm|bình tra|chai bơm|tra quạt|máy may|máy khâu|tông đơ|bôi trơn xích|dầu máy nhỏ", "Dụng cụ / dầu máy nhỏ"]
+    # "Dầu làm sạch kim phun", "nhớt ... dùng cho máy may": starts where the keep noun starts, longer match wins -> drop
+    - ["(?:dầu|nhớt)[^,.|]{0,40}?(?:làm sạch|súc béc|kim phun|vệ sinh|máy may|máy khâu|tông đơ|tra quạt|\\bquạt\\b)", "Phụ gia / vệ sinh / khác"]
+  freebie_items: [khăn, găng, tem, móc, phễu, bao]
+  keep_if_capacity: false
+  keep_reason: "dầu nhớt xe máy"
+  # TikTok keyword pages return unrelated products: the title must mention oil.
+  title_must_match: "nhớt|dầu (?:nhờn|động cơ|máy)|engine oil|motor oil"
+  title_must_match_platforms: [tiktok]
+  title_must_match_reason: "tên không chứa 'nhớt'"
+
+discovery:
+  tiktok:
+    # Confirmed 14/09: /vn/k/nhot-xe-may exists; /vn/k/dau-nhot-xe-may is 404. The walk follows
+    # 'Related Searches' from there (only slugs matching slug_include).
+    seed_slugs: [nhot-xe-may, nhot-xe-tay-ga, nhot-xe-so, dau-nhot, dau-nhot-xe-may]
+    slug_include: "nhot|dau-nhon|dau-dong-co"
+    slug_exclude: "(^|-)(o-to|oto|xe-hoi|loc|phieu|bom|dau-gio|dau-goi|dau-dua|xich|sen)(-|$)"
+
+specs:
+  # Volume (0.8 L / 1 L / 4 L), origin, warranty and colour still apply; drop drinkware-only ones.
+  enabled: [capacity, features, origin]
+  capacity:
+    min_ml: 100
+    max_ml: 20000
+  features:
+    hot_hours: false
+    cold_hours: false
+    # Named groups -> their own Excel columns (attr_grade, attr_type, attr_standard in reports/dau_nhot_xe_may.yaml).
+    groups:
+      grade:                      # viscosity grade (SAE)
+        - ["\\b0w[- ]?20\\b", "0W-20"]
+        - ["\\b5w[- ]?30\\b", "5W-30"]
+        - ["\\b5w[- ]?40\\b", "5W-40"]
+        - ["\\b10w[- ]?30\\b", "10W-30"]
+        - ["\\b10w[- ]?40\\b", "10W-40"]
+        - ["\\b10w[- ]?50\\b", "10W-50"]
+        - ["\\b15w[- ]?40\\b", "15W-40"]
+        - ["\\b15w[- ]?50\\b", "15W-50"]
+        - ["\\b20w[- ]?40\\b", "20W-40"]
+        - ["\\b20w[- ]?50\\b", "20W-50"]
+      type:                       # base oil
+        - ["tổng hợp toàn phần|fully synthetic|full synthetic|100% (?:tổng hợp|synthetic)|full tổng hợp", "Tổng hợp toàn phần"]
+        - ["bán tổng hợp|semi[- ]?synthetic|synthetic technology|công nghệ tổng hợp", "Bán tổng hợp"]
+        - ["dầu khoáng|nhớt khoáng|mineral", "Nhớt khoáng"]
+        # "nhớt tổng hợp" without saying which kind
+        - ["(?<!bán )(?<!full )(?<!% )tổng hợp(?! toàn phần)(?! 100)|(?<!semi[- ])(?<!semi )(?<!fully )(?<!full )synthetic(?! technology)", "Tổng hợp (không rõ loại)"]
+      jaso:                       # JASO (motorcycle clutch compatibility)
+        - ["jaso\\s*ma2", "MA2"]
+        - ["jaso\\s*ma1", "MA1"]
+        - ["jaso\\s*ma\\b", "MA"]
+        - ["jaso\\s*mb", "MB"]
+      api:                        # API service category
+        - ["api\\s*sp\\b", "SP"]
+        - ["api\\s*sn(?:\\s*plus)?", "SN"]
+        - ["api\\s*sm\\b", "SM"]
+        - ["api\\s*sl\\b", "SL"]
+        - ["api\\s*sj\\b", "SJ"]
+        - ["api\\s*sg\\b", "SG"]
+        - ["api\\s*sf\\b", "SF"]
+    # Grade and type are read from the TITLE only: descriptions of "đủ mã" shops list every grade they sell.
+    title_only_groups: [grade, type]
+    # A product has one base-oil type: keep the first (most specific) rule that matches.
+    first_match_groups: [type]
+    # Everything else stays in the "Tính năng" column.
+    flags:
+      - ["\\b4t\\b|4[- ]thì|4 kỳ", "Xe 4 thì"]
+      - ["\\b2t\\b|2[- ]thì|2 kỳ", "Xe 2 thì"]
+      - ["xe tay ga|scooter", "Dùng cho xe tay ga"]
+      - ["xe số|côn tay|manual", "Dùng cho xe số / côn tay"]
+      - ["chính hãng|nhập khẩu", "Ghi chính hãng / nhập khẩu"]
+      - ["tem chống (?:hàng )?giả|check mã|qr", "Có tem chống giả"]
+
+report:
+  filter_description: "Chỉ giữ dầu nhớt / nhớt hộp số cho xe máy (bỏ lọc, phễu, nhớt ô tô, phụ kiện)"
+  file_prefix: dau_nhot_xe_may
+  layout: dau_nhot_xe_may

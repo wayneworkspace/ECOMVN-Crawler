@@ -1,0 +1,29 @@
+# TikTok Shop Việt Nam (shop.tiktok.com/vn). No login needed.
+platform: tiktok
+
+# Products wanted in the final dataset (after the domain filter). --max-products overrides it.
+target: 200
+# Best sellers by listing sold count that get their product page opened = target x (1 + buffer).
+buffer_ratio: 0.6
+# The web has no search box or "sort by sales": the tool walks SEO keyword pages
+# /vn/k/<slug> (~55 products each) and their "Related Searches". Which slugs are
+# worth following comes from the domain profile (discovery.tiktok); without a
+# profile only pages containing the keyword's own slug are followed.
+# Measured 11/09: 40 pages -> 990 products (782 drinkware). 120 pages for a stable top 200.
+max_keyword_pages: 120
+
+browser:
+  name: chrome
+  profile_dir: ".browser_profile/tiktok"
+  headless: false
+  mode: attach
+
+pacing:
+  delay_min_s: 3
+  delay_max_s: 7
+  long_break_every: 40
+  long_break_min_s: 60
+  long_break_max_s: 150
+  # Not used by the TikTok crawler (kept for completeness of the section).
+  cooldown_every: 0
+  max_attempts: 2

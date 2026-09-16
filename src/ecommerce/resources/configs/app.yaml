@@ -1,0 +1,41 @@
+# Shared settings. Platform-specific settings live in platforms/<name>/config.yaml,
+# product-category knowledge in domains/<name>.yaml, the Excel layout in reports/.
+#
+# The crawl keyword is NOT configuration: pass it at run time.
+#   ecommerce crawl --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet
+
+# Platform used when --platform is omitted.
+default_platform: shopee
+# Domain profile applied when --domain is omitted (null = no filtering, no attribute extraction).
+default_domain: giu_nhiet
+
+paths:
+  # Relative to the project home (ECOMMERCE_HOME, default: the current directory).
+  data_dir: data          # data/raw = bronze layer (immutable JSON), data/image_cache, data/debug
+  output_dir: output      # output/<platform>/*.xlsx
+
+timeouts:
+  # Milliseconds. Slow network / slow site -> raise them.
+  page_load_ms: 90000        # page load
+  api_wait_ms: 60000         # wait for the product / search JSON after the page loaded
+  sku_settle_ms: 2000        # wait for the stock figure after clicking a variation
+  # Pause between two variation clicks (colour, capacity...). Each click is a request.
+  # 11/09: 5-10 s like a person choosing options (0.6-1.5 s got blocked repeatedly).
+  # 13/09: lowered to 3-5 s to shorten pass 2 (~4 h). Raise back to 5-10 s on captchas.
+  click_pause_min_ms: 3000
+  click_pause_max_ms: 5000
+
+export:
+  layout: default            # configs/reports/<layout>.yaml
+  embedded_images: 3         # pictures embedded per product (the rest stay links)
+  thumbnail_px: 110          # long edge of the embedded thumbnail (px)
+  sku_thumbnail_px: 70       # per-SKU picture on the Detail sheet (thousands of rows -> smaller)
+
+contracts:
+  # Data contracts (src/ecommerce/contracts/): the JSON fields the tool reads.
+  # N CONSECUTIVE products missing a core field (name, price, sold, variations)
+  # most likely means the site changed its JSON: the crawl pauses and asks. 0 = off.
+  guard_streak: 3
+  # check-schema: fail when the share of products having a field drops by more
+  # than this versus the baseline (0.2 = 20 points).
+  coverage_drop: 0.2

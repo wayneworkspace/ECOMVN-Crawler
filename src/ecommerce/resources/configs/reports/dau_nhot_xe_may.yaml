@@ -1,0 +1,97 @@
+# Excel layout for the motorcycle engine-oil domain: drinkware-only columns removed,
+# 'Tính năng' relabelled as the oil grade / type / standard column.
+# Excel layout. The consumption layer is independent: change sheets and columns
+# here, nothing in ingestion / parsing changes. Column keys refer to the registry
+# in src/ecommerce/consumption/excel/columns.py (how a value is computed stays in
+# Python; which columns appear, in what order, is decided here).
+name: dau_nhot_xe_may
+
+# {prefix} = domain profile file_prefix, else the keyword slug
+filename: "{prefix}_{platform}_top{count}_{run_id}_{stamp}.xlsx"
+
+sheets:
+  # One row per product, in 7 reading blocks: identity -> price -> sales & stock
+  # -> rating -> attributes -> shop -> raw text (long cells last).
+  # Picture cells are declared as columns (image_1..3); how many are really
+  # embedded is export.embedded_images in app.yaml.
+  - type: products
+    # name: dau_nhot_xe_mays to the platform label below
+    freeze_columns: 3          # rank + picture + product name stay visible
+    columns:
+      - final_rank
+      - image_1
+      - title
+      - url
+      - item_id
+      - product_type
+      - brand
+      - price_min
+      - price_max
+      - price_before_min
+      - discount_pct
+      - final_price
+      - sold_total
+      - sold_30d
+      - stock_value
+      - stock_state
+      - rating_star
+      - rating_total
+      - rating_5
+      - rating_4
+      - rating_3
+      - rating_2
+      - rating_1
+      - variant_count
+      - tier_names
+      - capacity
+      - {key: attr_grade, header: "Cấp nhớt", width: 14}
+      - {key: attr_type, header: "Loại", width: 18}
+      - {key: attr_jaso, header: "JASO", width: 10}
+      - {key: attr_api, header: "API", width: 10}
+      - {key: features, header: "Tính năng khác", width: 30}
+      - origin
+      - shop_name
+      - shop_joined
+      - shop_url
+      - shop_location
+      - shop_response_rate
+      - promotions
+      - attributes_raw
+      - description
+      - image_links
+      - image_2
+      - image_3
+
+  # One row per SKU: rank | name | picture | product id | SKU id | the shop's own
+  # variation groups verbatim | the columns below.
+  - type: sku_detail
+    name: Detail
+    columns: [capacity, price, price_before_discount, discount_pct, final_price, stock, stock_status, image_url]
+
+  - type: excluded
+    name: "Bị loại"
+
+  - type: failures
+    name: "Lỗi crawl"
+
+  - type: info
+    name: "Thông tin"
+
+platforms:
+  shopee:
+    label: Shopee
+    head_color: "#EE4D2D"
+    excluded_headers: ["Hạng trên sàn", "Trang"]
+  tiktok:
+    label: TikTok Shop
+    head_color: "#161823"
+    # Fields the web TikTok Shop never publishes: no voucher price, no 30-day
+    # sales, no shop opening date, and no shop page (the link only opens in the app).
+    drop_columns: [final_price, sold_30d, shop_joined, shop_url]
+    excluded_headers: ["Hạng trong nguồn", "Trang từ khoá"]
+  lazada:
+    label: Lazada
+    head_color: "#0F146D"
+    # Not published by Lazada: 30-day sales, personal voucher price, shop opening date.
+    drop_columns: [sold_30d, final_price, shop_joined]
+    excluded_headers: ["Hạng trên sàn", "Trang"]

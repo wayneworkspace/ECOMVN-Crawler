@@ -1,0 +1,52 @@
+{
+ "mainInfo": {
+  "totalResults": "1250"
+ },
+ "mods": {
+  "listItems": [
+   {
+    "itemId": "1230376943",
+    "name": "Dầu nhớt xe tay ga 800ml cao cấp 10W30 SL/MB 0.8l IDEMITSU thương hiệu Nhật Bản",
+    "price": "129000",
+    "priceShow": "129.000 ₫",
+    "originalPrice": "165000",
+    "discount": "22% Off",
+    "ratingScore": "4.8",
+    "review": "356",
+    "itemSoldCntShow": "Đã bán 1,2k",
+    "location": "Hồ Chí Minh",
+    "sellerName": "Idemitsu Official Store",
+    "brandName": "Idemitsu",
+    "image": "//img.lazcdn.com/a.jpg",
+    "itemUrl": "//www.lazada.vn/products/dau-nhot-i1230376943-s4564299902.html",
+    "sellerId": "100200"
+   },
+   {
+    "itemId": "222",
+    "skuId": "2220",
+    "sellerId": "5",
+    "name": "Nhớt Motul 7100 10W40 1L",
+    "price": "250000",
+    "itemSoldCntShow": "Đã bán 856",
+    "ratingScore": "4.9",
+    "review": "40"
+   },
+   {
+    "itemId": "333",
+    "skuId": "3330",
+    "sellerId": "6",
+    "name": "Lọc nhớt Honda Winner",
+    "price": "45000",
+    "itemSoldCntShow": "Đã bán 3,4k"
+   },
+   {
+    "itemId": "444",
+    "skuId": "4440",
+    "sellerId": "7",
+    "name": "Nhớt Castrol Power1 10W40 0.8L",
+    "price": "150000",
+    "isSponsored": true
+   }
+  ]
+ }
+}

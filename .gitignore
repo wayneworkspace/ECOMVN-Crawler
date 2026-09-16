@@ -1,0 +1,53 @@
+# --- secrets / browser sessions (never commit) --------------------------------
+# The tool's browser profiles: Shopee SPC_* cookies, TikTok session, autofill.
+.browser_profile/
+.env
+.env.*
+!.env.example
+*cookies*.json
+*storage_state*.json
+*.har
+*.pem
+*.key
+secrets/
+
+# --- crawled data (large; may contain account-specific values) ---------------
+# raw JSON (bronze layer), image cache, debug page dumps
+data/*
+!data/.gitkeep
+# exported Excel files are deliverables, not source
+output/
+exports/
+~$*.xlsx
+~$*.xlsm
+
+# --- personal notes ------------------------------------------------------------
+notes/
+*.local.md
+*.local.yaml
+
+# --- python -------------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.log
+*.tmp
+
+# --- OS / editors ----------------------------------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

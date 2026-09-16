@@ -1,0 +1,1572 @@
+{
+ "platform": "shopee",
+ "kind": "search",
+ "made_from": "shopee/20260910",
+ "made_at": "2026-09-11T09:22:09",
+ "files": 5,
+ "rules": {
+  "Danh sách kết quả": {
+   "coverage": 1.0,
+   "primary": 1.0
+  },
+  "Mã sản phẩm": {
+   "coverage": 1.0,
+   "primary": 0.0
+  },
+  "Mã shop": {
+   "coverage": 1.0,
+   "primary": 0.0
+  },
+  "Tên sản phẩm": {
+   "coverage": 1.0,
+   "primary": 0.0
+  },
+  "Bán 30 ngày": {
+   "coverage": 1.0,
+   "primary": 0.0
+  },
+  "Đã bán (tổng)": {
+   "coverage": 1.0,
+   "primary": 0.0
+  }
+ },
+ "structure": {
+  "page": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.adjust": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.adjust.count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.ads_data_tms": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.batch_size": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.card_set": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.card_set.element_toggle": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.card_set.element_toggle.atc_button": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.card_set.element_toggle.feedback_button": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.card_set.layout_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.config": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.config.highlight_video_delay_ms": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.config.image_ui_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.debug_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.debug_info.fallback": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.experiments": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.experiments[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.experiments[].key": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.experiments[].value": {
+   "share": 1.0,
+   "types": [
+    "number",
+    "text"
+   ]
+  },
+  "payload.find_similar_response": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.food_item_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.food_item_info.total_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.hide_instant_filter": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.is_auto_part_intention": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.item_extra_config": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].bff_item_tracking": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].ctx_item_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_bottom_element": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_bottom_element.left": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_bottom_element.left[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.discount_tag": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.discount_tag.discount_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.display_price": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.display_price.price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.display_price.strikethrough_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.distance": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_icon": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_icon.hash": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_icon.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_icon.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_max": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_max_hours": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_max_mins": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_min": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_min_hours": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_min_mins": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_tracking_info": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.edt_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.estimated_delivery_time_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.fastest_channel_ids": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.fastest_channel_ids[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.is_show_shop_name_and_icon": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.estimated_delivery_time.model_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.find_similar": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.find_similar.button_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.icon_in_image": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.icon_in_image.ads_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.icon_in_image.icon_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay.image_overlay": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay.image_overlay.hash": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay.image_overlay.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay.image_overlay.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.image_overlay.legacy_overlay.name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.images": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.images[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].icon": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].icon.hash": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].icon.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].icon.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.in_title_image_flags[].type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.item_card_mask": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.item_card_mask.enable_age_gate_label": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.item_card_mask.post_kyc_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.item_card_mask.pre_kyc_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.long_image": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.long_images": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.long_images[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].data": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].data.text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].specs": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].specs.border_color": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].specs.text_color": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].style": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.promotion_label_list[].type": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.icon": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.icon.hash": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.icon.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.icon.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.rating_text": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.rating.rating_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag.image_flag": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag.image_flag.hash": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag.image_flag.height": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag.image_flag.width": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.seller_flag.name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.shop_location": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.sold_count": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.sold_count.text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.voucher_applied_icon": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_card_displayed_asset.voucher_applied_icon.can_display": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_config": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_config.disable_image_to_pdp": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_config.disable_model_id_to_pdp": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.catid": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.ctime": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.distance": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_max": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_max_hours": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_max_mins": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_min": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_min_hours": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.edt_min_mins": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.fastest_channel_ids": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.fastest_channel_ids[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.is_unserviceable": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.max_estimated_delivery_timestamp": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.min_estimated_delivery_timestamp": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.model_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.serviceable_channels": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_data.estimated_delivery_time_info.serviceable_channels[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.flag": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.global_brand": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.global_brand.brand_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.global_brand.display_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.global_cat": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.global_cat.catid": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_data.global_cat.catid[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.is_adult": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.is_preview": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.is_sexual": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.is_sold_out": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.applied_product_promo_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.discount": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.model_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.model_selection_logic": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.original_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.promotion_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.promotion_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.min_spend": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.percentage_with_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.promotion_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.time_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.time_info.end_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.time_info.start_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.voucher_code": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_info.voucher_discount": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_platform_voucher_promotion_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.min_spend": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.percentage_with_decimal": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.promotion_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.time_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.time_info.end_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.time_info.start_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.voucher_code": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_info.voucher_discount": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.recommended_shop_voucher_promotion_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_price.strikethrough_price": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_sold_count": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_sold_count.historical_sold_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_sold_count.historical_sold_count_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_sold_count.monthly_sold_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_card_display_sold_count.monthly_sold_count_text": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.item_rating": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.item_rating.rating_count": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_data.item_rating.rating_count[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_rating.rating_star": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.item_status": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.item_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.itemid": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.label_ids": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_data.label_ids[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.liked_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.need_kyc": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.shop_data": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].item_data.shop_data.shop_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_data.shopee_verified": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.items[].item_data.shopid": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_data.status": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_identities": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].item_identities[]": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].item_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].item_unique_key": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].itemid": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].play_icon_ui_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].repeated_item_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].search_item_tracking": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].shopid": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].tc_rule_array": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].tc_rule_array[]": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].tc_rule_array[].project_id": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].tc_rule_array[].project_name": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].tc_rule_array[].project_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].tc_rule_array[].tc_label": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.items[].tracking_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.items[].tracking_info.ruleid": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.items[].tracking_info.ruleid[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.items[].traffic_source": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.json_data": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.landing_page_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.need_next_search": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.nomore": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.performance": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.performance.be_performance_info": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.performance.request_id": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.performance.request_pack_size": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.performance.response_pack_size": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.performance.server_cost": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.query_rewrite": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.query_rewrite.fe_query_write_status": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.query_rewrite.ori_keyword": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.query_rewrite.ori_total_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.request_id": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.search_item_bff_tracking": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.search_tracking": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "payload.show_disclaimer": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.srp_component_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.srp_component_info.buy_together_card_count_per_page": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.srp_component_info.buy_together_card_offset": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.srp_component_info.realtime_award_config": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.srp_component_info.realtime_award_config.enable": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.srp_component_info.realtime_award_config.stay_time": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.srp_component_info.show_ai_chat_entry": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.total_ads_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.total_count": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.ui_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.ui_info.card_display_layout_type": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.ui_info.dynamic_translation_status": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "payload.user_info": {
+   "share": 1.0,
+   "types": [
+    "dict"
+   ]
+  },
+  "payload.user_info.is_affiliate": {
+   "share": 1.0,
+   "types": [
+    "bool"
+   ]
+  },
+  "payload.user_info.user_type": {
+   "share": 1.0,
+   "types": [
+    "list"
+   ]
+  },
+  "payload.user_info.user_type[]": {
+   "share": 1.0,
+   "types": [
+    "number"
+   ]
+  },
+  "request_url": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "scraped_at": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  },
+  "url": {
+   "share": 1.0,
+   "types": [
+    "text"
+   ]
+  }
+ }
+}
