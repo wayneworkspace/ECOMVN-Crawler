@@ -6,7 +6,6 @@ immutable, validates and transforms them per platform, and exports the result to
 Excel (one row per product, one row per SKU, embedded pictures).
 
 **Platform-specific at the edge, unified at the core, independent at consumption.**
-
 ```
 ecommerce crawl  --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet --max-products 200
 ecommerce export --platform shopee --keyword "bình giữ nhiệt"
@@ -162,7 +161,7 @@ configs/
   the browser binary.
 
 ---
-
+  
 ## How it works
 
 ```
