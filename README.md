@@ -1,260 +1,145 @@
-# E-commerce Data Platform
+# Multi-Platform E-Commerce Data Pipeline
 
-Multi-platform e-commerce data engineering system. Crawls product data from
-Shopee Việt Nam, TikTok Shop Việt Nam and Lazada Việt Nam for any keyword, keeps the raw responses
-immutable, validates and transforms them per platform, and exports the result to
-Excel (one row per product, one row per SKU, embedded pictures).
+A resilient, multi-platform e-commerce data engineering pipeline that crawls product data from Shopee Việt Nam, TikTok Shop Việt Nam, and Lazada Việt Nam for any keyword, keeps raw API responses immutable in a Bronze layer, validates and transforms them into a unified canonical model, and exports formatted Excel reports with embedded product images.
 
-**Platform-specific at the edge, unified at the core, independent at consumption.**
-```
-ecommerce crawl  --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet --max-products 200
-ecommerce export --platform shopee --keyword "bình giữ nhiệt"
-```
-
-This release is the migration of the proven single-purpose crawler into the
-platform layout described in [`docs/architecture/overview.md`](docs/architecture/overview.md).
-The layers that exist run for real and are tested (274 unit + integration tests);
-the layers that do not exist yet are documented, not scaffolded — see
-[`docs/architecture/roadmap.md`](docs/architecture/roadmap.md).
+Techstack
+Python 3.10+ | Patchright (Playwright) | Pydantic v2 | XlsxWriter | PyYAML | Pytest | Ruff
 
 ---
 
-## What you get
+## Overview
 
-| Layer | Where | What it does |
-|---|---|---|
-| User input | `ecommerce` CLI | `--platform`, `--keyword`, `--domain`, `--max-products`; keyword is a run-time input, never configuration |
-| Platform edge | `src/ecommerce/platforms/<name>/` + `configs/platforms/<name>/config.yaml` | Each platform owns its config, extraction, parsers and dataset builder behind one `PlatformAdapter` interface |
-| Ingestion | `src/ecommerce/ingestion/` | Real Chrome/Edge in *attach* mode, block / captcha detection, pacing and cooldowns, atomic raw writes |
-| Bronze / raw | `data/raw/<platform>/<run>/` | Immutable JSON per captured page + `run.json` metadata; the raw files are the checkpoint and the replay source |
-| Data contracts | `src/ecommerce/contracts/` | Which JSON fields each platform must have; schema-drift guard while crawling, `check-schema` against a baseline |
-| Transformation | `src/ecommerce/transformation/` + `platforms/<name>/parse/` | Platform parsers → typed `Product` model; domain profile drives the product filter and attribute extraction |
-| Consumption | `src/ecommerce/consumption/excel/` + `configs/reports/default.yaml` | Excel layout declared in YAML: sheets, order, columns, per-platform styling |
+**Problem** — Modern e-commerce platforms (Shopee, TikTok Shop, Lazada) constantly change CSS selectors, hash class names, and deploy anti-scraping blocks (captchas, login walls). Extracting structured product data manually or using brittle HTML scrapers leads to high maintenance overhead, lost progress when blocked, and inconsistent data across platforms.
 
-### Output
+**Solution** — An enterprise data engineering pipeline designed with the philosophy: *"Platform-specific at the edge, unified at the core, independent at consumption."* The tool attaches to real browser sessions (Chrome/Edge), listens directly to XHR/Fetch JSON responses from internal APIs instead of parsing HTML/CSS, stores raw JSON immutably in a Bronze layer (allowing offline replay and zero-re-crawl exports), enforces real-time schema drift contracts, transforms data into a Pydantic canonical domain model, and outputs structured Excel deliverables.
 
-`output/<platform>/<prefix>_<platform>_top<N>_<run>_<time>.xlsx`
-
-| Sheet | Content |
-|---|---|
-| **Shopee** / **TikTok Shop** | 1 row per product: identity → price → sales & stock → rating → attributes → shop → raw text; 3 pictures embedded, all image links in one cell |
-| **Detail** | 1 row per SKU: rank · name · SKU picture · ids · the shop's variation groups verbatim · capacity · price · list price · % off · voucher price · stock · status · image link |
-| **Checklist đề bài** | Coverage of each requirement of the original brief (domain-specific; disable in the layout for other domains) |
-| **Bị loại** | Search results dropped by the domain filter, with the reason |
-| **Lỗi crawl** | Products whose page could not be captured |
-| **Thông tin** | Keyword, domain, sort order, run id, counts |
-
-Column headers and sheet content are Vietnamese (they are the deliverable); code,
-configuration comments and documentation are English.
+**Data Flow** — CLI Request (`ecommerce crawl`) → Attach Browser (Patchright) → Raw JSON Store (`data/raw/<platform>/<run_id>/`) → Data Contract Guard → Unified Product Model (`src/ecommerce/domain/product.py`) → Domain Filter & Spec Extractor → Formatted Excel Export (`output/<platform>/<filename>.xlsx`).
 
 ---
 
-## Install
+## Architecture
 
-Requirements: Python 3.10+, Google Chrome or Microsoft Edge (Windows: installed in the default location).
+Source → Ingestion → Processing → Storage
 
-```powershell
-cd E-commerce_Scraping
+- **Source** — The user initiates a crawl or export via the `ecommerce` CLI specifying `--platform`, `--keyword`, `--domain`, and `--max-products`.
+- **Ingestion** — Real Chrome/Edge browser in *Attach Mode* navigates search and product pages, intercepted by Patchright network listeners. Raw API payloads (`search_items`, `pdp/get_pc`, `__MODERN_ROUTER_DATA__`, `window.__moduleData__`) are saved immutably as JSON files under `data/raw/<platform>/<run_id>/` (Bronze Layer).
+- **Processing** — Raw JSON responses are validated against schema drift contracts (`src/ecommerce/contracts/`). Platform parsers translate raw JSON into a unified Pydantic `Product` canonical model. Domain profiles (`configs/domains/*.yaml`) apply rule-based filtering (keeping relevant products, discarding off-category items) and extract regex specifications (capacity, material, dimensions, features).
+- **Storage** — Output Excel reports (`.xlsx`) are generated in `output/` using `XlsxWriter`, featuring multiple sheets (Platform summary, SKU Detail, Checklist, Dropped items, Crawl errors, Run Info), custom styling, and embedded thumbnails.
+
+---
+
+## Project Structure
+
+```text
+ecommerce-data-platform/
+├── README.md
+├── pyproject.toml
+├── .env.example
+├── configs/
+│   ├── app.yaml
+│   ├── platforms/
+│   │   ├── shopee/config.yaml
+│   │   ├── tiktok/config.yaml
+│   │   └── lazada/config.yaml
+│   ├── domains/
+│   │   └── giu_nhiet.yaml
+│   └── reports/
+│       └── default.yaml
+├── docs/
+│   └── architecture/
+│       ├── dependency_graph.md
+│       └── refactoring_proposal.md
+├── src/
+│   └── ecommerce/
+│       ├── cli.py
+│       ├── settings.py
+│       ├── ingestion/
+│       │   ├── browser.py
+│       │   ├── raw_store.py
+│       │   └── images.py
+│       ├── contracts/
+│       │   ├── guard.py
+│       │   ├── check.py
+│       │   ├── rules.py
+│       │   ├── shopee.py
+│       │   ├── tiktok.py
+│       │   └── lazada.py
+│       ├── domain/
+│       │   ├── product.py
+│       │   ├── candidate.py
+│       │   ├── dataset.py
+│       │   └── profile.py
+│       ├── platforms/
+│       │   ├── base.py
+│       │   ├── common/
+│       │   │   └── helpers.py
+│       │   ├── shopee/
+│       │   ├── tiktok/
+│       │   └── lazada/
+│       ├── transformation/
+│       │   ├── filters.py
+│       │   └── specs/
+│       └── consumption/
+│           └── excel/
+├── tests/
+└── tools/
+```
+
+`cli.py` is the orchestrator: it handles user commands (`crawl`, `export`, `probe`, `status`, `check-schema`) and coordinates `ingestion` → `contracts` → `platforms` → `transformation` → `consumption`.
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.10+
+- Google Chrome or Microsoft Edge installed on Windows/Linux/macOS.
+
+### Setup
+
+```bash
+git clone <repo-url>
+cd ecommerce-data-platform
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate  # On Windows: .\.venv\Scripts\Activate.ps1
 pip install -e ".[crawler,dev]"
-ecommerce platforms          # sanity check: lists shopee / tiktok
 ```
 
-Build a wheel: `python -m build` → `dist/ecommerce_data_platform-0.1.0-py3-none-any.whl`.
-An installed wheel works without the repo: it carries a copy of `configs/`; run
-`ecommerce init` in any folder to copy them out for editing.
+### Running Commands
 
-## Run
-
-```powershell
-# 1. Log in to Shopee ONCE. A normal browser window opens on the tool's own profile:
-#    log in (QR is easiest), reach the home page, then CLOSE that window.
+```bash
+# 1. Login once (for Shopee or Lazada captcha sessions)
 ecommerce login --platform shopee
 
-# 2. Try 20 products, export, open the Excel and compare a few products with the site.
+# 2. Probe run (try 20 products to test session and extraction)
 ecommerce probe --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet
 
-# 3. Full run (~11-12 h with the anti-block pacing). `crawl` ALWAYS opens a new run
-#    = one snapshot of the top N at that moment. Interrupted? `ecommerce resume ...`.
+# 3. Full crawl (saves raw JSON to data/raw/shopee/<run_id>/)
 ecommerce crawl --platform shopee --keyword "bình giữ nhiệt" --domain giu_nhiet
 
-#    Shopee blocks accounts that click many variations -> split in two passes:
-ecommerce crawl --platform shopee --keyword "bình giữ nhiệt" --pass 1   # product pages only
-ecommerce crawl --platform shopee --keyword "bình giữ nhiệt" --pass 2   # per-SKU stock (Detail sheet)
-
-# 4. Export (any number of times, no browser)
+# 4. Replay Export (generates Excel report offline from Bronze raw files without re-crawling)
 ecommerce export --platform shopee --keyword "bình giữ nhiệt"
 ```
 
-TikTok Shop needs no login. If a "Security Check" puzzle appears the tool pauses;
-solve it in the browser window and press Enter.
-
-```powershell
-ecommerce probe  --platform tiktok --keyword "bình giữ nhiệt" --limit 20
-ecommerce crawl  --platform tiktok --keyword "bình giữ nhiệt"        # top 200 (~40-60 min)
-ecommerce export --platform tiktok --keyword "bình giữ nhiệt"
-ecommerce status --platform tiktok
-```
-
-Lazada works as a guest; logging in once (`ecommerce login --platform lazada`) means
-fewer slider captchas. When a captcha shows, the tool pauses; solve it in the
-browser window and press Enter.
-
-```powershell
-ecommerce login  --platform lazada                                   # optional
-ecommerce probe  --platform lazada --keyword "dầu nhớt xe máy" --limit 20
-ecommerce crawl  --platform lazada --keyword "dầu nhớt xe máy"      # top 200 (~1.5 h)
-ecommerce export --platform lazada --keyword "dầu nhớt xe máy"
-```
-
-All platforms can run at the same time (one terminal and one browser profile each).
-
-Other commands:
-
-```powershell
-ecommerce status --platform shopee                 # progress of the latest run
-ecommerce resume --platform shopee --keyword "..." # continue an interrupted run
-ecommerce export --no-images                       # fast export without pictures
-ecommerce inspect 11_111 --part pdp                # key tree of one product's JSON
-ecommerce check-schema --platform shopee           # do the saved files still have the fields the tool reads?
-ecommerce check-schema --save-baseline             # make this good run the comparison baseline
-```
-
-**When a site changes its JSON:** the crawl pauses after 3 consecutive products
-missing a core field. Run `check-schema` to see which fields disappeared and the
-suggested new names, then follow [`src/ecommerce/contracts/README.md`](src/ecommerce/contracts/README.md).
-The raw data is already saved, so after the fix only `export` is needed.
-
-**When a captcha appears:** the tool pauses and prints instructions. Solve it in
-the browser window, press Enter, and the same product is retried.
-
 ---
 
-## Configuration
+## Configuration (`configs/`)
 
-```
-configs/
-├── app.yaml                       shared: default platform / domain, paths, timeouts, export, contracts
-├── platforms/
-│   ├── shopee/config.yaml         browser profile, pacing, sort, pages, per-SKU stock
-│   └── tiktok/config.yaml         browser profile, pacing, keyword-page budget
-├── domains/
-│   └── giu_nhiet.yaml             domain profile: product filter, attribute vocabularies, TikTok discovery
-└── reports/
-    └── default.yaml               Excel layout: sheets, order, columns, per-platform styling
-```
+All system settings are organized in YAML files and validated at startup using Pydantic models:
 
-* **Keyword** — always `--keyword`. Never in YAML.
-* **Domain profile** (`--domain`, default `app.yaml: default_domain`) — the
-  product-category knowledge: which title nouns to keep / drop ("bình" keeps,
-  "túi" drops), material and feature vocabularies, which TikTok keyword pages
-  to walk. `--domain none` crawls any keyword with no filtering and no
-  attribute extraction. Copy `giu_nhiet.yaml` to make a profile for another category.
-* **Report layout** — change the sheet list or column order in
-  `configs/reports/default.yaml`; nothing in ingestion or parsing changes.
-  Column *values* are computed in `src/ecommerce/consumption/excel/columns.py`.
-* All YAML is validated with Pydantic at start-up: a typo or wrong type fails
-  immediately with the field name.
-* `ECOMMERCE_HOME` (default: current directory) is where `configs/`, `data/`,
-  `output/` and browser profiles live. `ECOMMERCE_CHROME_EXECUTABLE` overrides
-  the browser binary.
-
----
-  
-## How it works
-
-```
-  ecommerce crawl  (platforms/<p>/extract)                    ecommerce export  (parse -> consumption)
-┌──────────────────────┐   ┌──────────────────────┐   ┌──────────────────────────┐   ┌──────────────────────┐
-│ discovery            │   │ product pages        │   │ platforms/<p>/parse/     │   │ consumption/excel    │
-│ search / keyword     │──►│ capture the JSON the │──►│ raw JSON -> Product      │──►│ layout YAML -> xlsx  │
-│ pages -> candidates  │   │ page itself loads    │   │ + domain profile         │   │                      │
-└──────────┬───────────┘   └──────────┬───────────┘   └────────────▲─────────────┘   └──────────────────────┘
-           ▼                          ▼                            │
-   data/raw/<p>/<run>/search/   data/raw/<p>/<run>/items/  ────────┘   (bronze layer = checkpoint + replay)
-```
-
-1. **No HTML/CSS parsing.** The tool opens the real page in Chrome and *listens*
-   to the JSON responses the page itself requests (`search_items`, `pdp/get_pc`,
-   `get_ratings`). CSS classes are hashed and change every deploy; JSON is stable.
-2. **Raw first, transform later.** Every captured page is saved verbatim under
-   `data/raw/`. The raw files are the checkpoint (a product with a file is done)
-   and the replay source: a parser fix is applied by re-running `export`.
-3. **Rank** = position in the platform's own "best selling" order (ads excluded).
-
-Why each technical choice was made, and the failures it avoids:
-[`docs/decisions/README.md`](docs/decisions/README.md).
-
-### Shopee vs TikTok Shop vs Lazada
-
-| | Shopee | TikTok Shop (web VN) | Lazada |
-|---|---|---|---|
-| Discovery | Search box, sort "Bán chạy" | **No search box, no sort.** Walk `/vn/k/<slug>` keyword pages + "Related Searches" (domain profile), rank by total sold | Search, sort "Bán chạy" (`sort=popularity`), JSON via `ajax=true` |
-| Data | JSON API the page calls | JSON embedded in the HTML (`__MODERN_ROUTER_DATA__`), read by XHR in the tab that passed the captcha | `window.__moduleData__` cut out of the product HTML, read by XHR in the tab |
-| Per-SKU stock | Click each variation | **Exact, in the JSON** | In the JSON (`skuInfos`) |
-| 30-day sales / voucher price / shop opening date | Yes | Not published → columns dropped in the layout | Not published → columns dropped |
-
-### Data limits (read before analysing)
-
-| Field | Limit |
+| YAML Path | Description |
 |---|---|
-| Shop address | Shopee publishes only the shipping province |
-| Price | List price after the shop's discount (same for everyone); "Giá sau voucher" depends on the crawling account |
-| Stock | Shopee JSON has no per-SKU count; the tool selects each variation and reads "N pieces available" (max 40 clicks / product) |
-| Reviews | Only score, total and star distribution; the page loads featured 5-star reviews only, so review text is not exported |
-| Material / origin / warranty / size | Attribute table first, then regex on title and description; the "Nguồn trích xuất" column says where it came from |
+| `configs/app.yaml` | Global settings: timeouts, default platform/domain, raw data paths, export sizes. |
+| `configs/platforms/<name>/config.yaml` | Platform-specific settings: browser profiles, pacing delay ranges, page limits, SKU stock parameters. |
+| `configs/domains/<name>.yaml` | Domain knowledge profile: title filter terms (keep/drop), attribute vocabularies (materials, features), search discovery rules. |
+| `configs/reports/default.yaml` | Report presentation layout: sheet order, active columns, per-platform styling, checklist definitions. |
 
 ---
 
-## Development
+## Troubleshooting & Limitations
 
-```powershell
-pytest                       # 267 unit tests: parsers (incl. malformed payloads), regex, filter, config, contracts, Excel
-ruff check src tests tools   # lint
-pytest --cov=ecommerce       # coverage
-
-$env:ECOMMERCE_CHROME_EXECUTABLE="C:\Program Files\Google\Chrome\Application\chrome.exe"
-pytest tests/integration     # 7 tests driving real Chrome against fake Shopee / TikTok sites served locally
-python tools\verify_excel_output.py output\shopee\giu_nhiet_*.xlsx --sample 10   # checks on an exported file
-```
-
-### Repository layout
-
-```
-configs/                          YAML: app, platforms/<name>, domains/<name>, reports/<name>
-src/ecommerce/
-  cli.py                          commands
-  settings.py                     typed config + CrawlRequest (runtime input) + paths
-  domain/                         Product / Variant / Shop..., candidates, Dataset, DomainProfile
-  ingestion/                      browser (attach mode, block detection), raw_store (bronze layer), images
-  platforms/
-    base.py, __init__.py          PlatformAdapter interface + registry
-    shopee/  adapter.py           extract/ (listing, detail, sku_stock, session)  parse/ (raw -> Product, dataset)
-    tiktok/  adapter.py           extract/ (fetch, crawl)                          parse/ (raw -> Product, dataset)
-    lazada/  adapter.py           extract/ (fetch, crawl, session)                 parse/ (common, listing, product, dataset)
-  contracts/                      data contracts, schema-drift guard, check-schema, baselines
-  transformation/                 domain filter + spec extractors (capacity, materials, ...)
-  consumption/excel/              layout (YAML), column registry, checklist, writer
-  resources/configs/              copy of configs/ shipped in the wheel (tests assert both are identical)
-tests/                            unit + integration (real Chrome on fake sites)
-tools/                            manual verification of an exported Excel file
-docs/                             architecture, roadmap, decisions, data notes
-data/raw/                         bronze layer (not committed)     output/   Excel files (not committed)
-```
-
-### Adding a platform
-
-1. `src/ecommerce/platforms/<name>/` with `adapter.py` (subclass `PlatformAdapter`), `extract/`, `parse/`.
-2. A settings class in `settings.py` and `configs/platforms/<name>/config.yaml`.
-3. Contract rules in `src/ecommerce/contracts/<name>.py` + a baseline.
-4. One entry in `platforms/__init__.py`. Styling in `configs/reports/default.yaml`.
-   
-Nothing else changes.
-
-## Usage note
-
-The tool reads public product pages only, sequentially, with long random pauses
-(20-45 s between products, 4-8 min every 8, 20-30 min every 24; on
-`/verify/traffic` it backs off 60 → 120 → 180 → 240 min). It is intended for
-market research on public data.
+- **Browser Captcha / Anti-Bot Block** — When a captcha puzzle or security check appears, the tool automatically pauses execution and prints instructions in the console. Solve the puzzle manually in the open Chrome window and press `Enter` to resume crawling seamlessly.
+- **Schema Drift Error** — If a platform updates its internal API response format, `guard.py` triggers a circuit breaker after 3 consecutive invalid items to prevent corrupting data. Run `ecommerce check-schema` to inspect missing keys against baselines in `src/ecommerce/contracts/baselines/`.
+- **Shopee Variation Rate Limits** — Shopee rate-limits accounts that query too many SKU variation combinations in short intervals. Use split-pass crawling (`ecommerce crawl --pass 1` then `--pass 2`) to separate product detail extraction from per-SKU stock queries.
+- **Offline Export Replay** — Since every captured page is stored immutably in `data/raw/`, you can modify report layouts in `configs/reports/default.yaml` or update parser regex rules and re-run `ecommerce export` instantly without hitting web servers again.
