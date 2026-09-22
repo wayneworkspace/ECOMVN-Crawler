@@ -34,36 +34,52 @@ from ecommerce.domain.profile import DomainProfile, TitleFilter
 from ecommerce.transformation.specs.capacity import capacities_ml
 from ecommerce.transformation.specs.common import norm
 
-KEEP_ALL = "không lọc"          # reason recorded when no profile is active
+KEEP_ALL = "không lọc"          # Default reason recorded when no profile is active
 
 
 @dataclass(frozen=True)
 class Verdict:
+    """Represents the classification result for a product title.
+
+    Attributes:
+        keep: True if the product belongs to the target domain category.
+        product_type: The matched noun label (e.g., 'bình', 'ly', 'túi').
+        reason: Explanation for keeping or dropping the item.
+    """
     keep: bool
     product_type: str
     reason: str
 
 
 def _first_match(title: str, nouns: list[tuple[str, str]]) -> tuple[int, int, str] | None:
+    """Finds the first occurring keyword noun in the product title.
+
+    Args:
+        title: Normalized and stripped product title string.
+        nouns: List of (regex_pattern, label) tuples from domain profile.
+
+    Returns:
+        A tuple of (start_position, -phrase_length, label) or None if no match.
+    """
     best: tuple[int, int, str] | None = None
     for rx, label in nouns:
         m = re.search(rx, title)
         if m is None:
             continue
-        # earliest position wins; at the same position the longer phrase wins
+        # Earliest position wins; at the same position, the longer phrase wins.
         candidate = (m.start(), -(m.end() - m.start()), label)
         if best is None or candidate < best:
             best = candidate
     return best
 
 
-# [..] <..> (..) {..} 【..】 tags: promos, freebies, shop names -- never the product
+# Pattern matching promotional tags: [..], <..>, (..), {..}, 【..】
 _TAGS = re.compile(r"[\[<({【][^\]>)}】]{0,120}[\]>)}】]")
 
 
 @lru_cache(maxsize=8)
 def _freebie_regex(items: tuple[str, ...], qualifiers: tuple[str, ...]) -> re.Pattern | None:
-    """"tặng kèm dây đeo", "tặng túi", "kèm 2 ống hút": the gift, not the product."""
+    """Builds regex pattern for detecting freebie mentions (e.g., "tặng kèm túi")."""
     if not items:
         return None
     pattern = (r"(?:tặng|kèm|quà tặng|free)(?:\s+kèm)?(?:\s+\d+)?\s+(?:" + "|".join(items) + ")")
@@ -73,6 +89,7 @@ def _freebie_regex(items: tuple[str, ...], qualifiers: tuple[str, ...]) -> re.Pa
 
 
 def strip_freebies(text: str, spec: TitleFilter | None = None) -> str:
+    """Strips promotional tag brackets and freebie gift terms from product title."""
     text = _TAGS.sub(" ", text)
     rx = _freebie_regex(tuple(spec.freebie_items), tuple(spec.freebie_qualifiers)) if spec else None
     if rx is not None:
@@ -81,20 +98,30 @@ def strip_freebies(text: str, spec: TitleFilter | None = None) -> str:
 
 
 def classify(title: str | None, profile: DomainProfile | None = None) -> Verdict:
-    """Keep / drop a product from its title, per the profile's noun tables."""
+    """Evaluates whether to keep or drop a product based on its title and domain rules.
+
+    Step 1: Check if profile exists; if not, keep product.
+    Step 2: Clean freebies and promotional tags from title.
+    Step 3: Search for target 'keep' nouns vs 'drop' nouns.
+    Step 4: Determine verdict based on first-occurring noun or capacity hint.
+    """
     if profile is None:
         return Verdict(True, "", KEEP_ALL)
+
     spec = profile.filter
     full = norm(title)
     text = strip_freebies(full, spec)
+
     drink = _first_match(text, spec.keep_nouns)
     other = _first_match(text, spec.drop_nouns)
+
+    # Fallback: if entire title was enclosed in promo tags, search full unstripped title
     if drink is None and other is None:
-        # the whole name was inside a tag ("[Bình giữ nhiệt 1L] tặng túi"): use it as is
         text = full
         drink = _first_match(text, spec.keep_nouns)
         other = _first_match(text, spec.drop_nouns)
 
+    # Verdict Decision Tree
     if drink and (other is None or drink[:2] <= other[:2]):
         return Verdict(True, drink[2], spec.keep_reason)
     if other:
@@ -103,11 +130,12 @@ def classify(title: str | None, profile: DomainProfile | None = None) -> Verdict
         return Verdict(True, spec.keep_if_capacity_type, "có dung tích trong tên")
     if not spec.keep_nouns and not spec.drop_nouns:
         return Verdict(True, "", KEEP_ALL)
+
     return Verdict(False, "Không xác định", "không nhận ra loại sản phẩm")
 
 
 def title_matches(title: str | None, profile: DomainProfile | None, platform: str) -> bool:
-    """`filter.title_must_match` for the platforms it applies to; True otherwise."""
+    """Checks if platform-specific title requirement regex passes."""
     if profile is None or not profile.filter.title_must_match:
         return True
     if platform not in profile.filter.title_must_match_platforms:
@@ -116,4 +144,5 @@ def title_matches(title: str | None, profile: DomainProfile | None, platform: st
 
 
 def keep_product(title: str | None, profile: DomainProfile | None, platform: str) -> bool:
+    """Main filter entry point returning True if product should be kept in dataset."""
     return title_matches(title, profile, platform) and classify(title, profile).keep
