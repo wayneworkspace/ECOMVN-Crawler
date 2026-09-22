@@ -8,13 +8,14 @@ import sys
 from ecommerce.domain.candidate import ShopeeCandidate
 from ecommerce.domain.dataset import Dataset
 from ecommerce.ingestion.raw_store import RunStore, read_json
-from ecommerce.platforms.base import PlatformAdapter
+from ecommerce.platforms.base import PlatformAdapter, register_platform
 from ecommerce.settings import AppConfig
 
 NOT_LOGGED_IN = ("The tool's browser profile is NOT logged in to Shopee.\n"
                  "Run:  ecommerce login --platform shopee   then run this command again.")
 
 
+@register_platform("shopee")
 class ShopeeAdapter(PlatformAdapter):
     name = "shopee"
     label = "Shopee"

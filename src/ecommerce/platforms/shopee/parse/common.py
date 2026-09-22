@@ -1,16 +1,4 @@
-"""Helpers for reading Shopee's loosely-typed JSON, and the bundle of raw blocks.
-
-Shopee changes its payload shape without notice, so every field is read from
-several places in priority order (`first(...)`), and missing data is None --
-never 0. A 0 would be a lie in a sales report ("sold 0") while None honestly
-says "Shopee did not tell us".
-
-Sources, in the order they are trusted:
-    pdp     = api/v4/pdp/get_pc           (product page, the richest payload)
-    ratings = api/v2/item/get_ratings     (review list + review summary)
-    shop    = shop endpoints loaded by the product page (fallback for shop fields)
-    search  = api/v4/search/search_items card (has the 30-day sold count)
-"""
+"""Helpers for reading Shopee's loosely-typed JSON, and the bundle of raw blocks."""
 from __future__ import annotations
 
 import re
@@ -18,76 +6,35 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
 
+from ecommerce.platforms.common.helpers import _d, _l, _s, deep_find, dig, first, first_pos, to_float, to_int
+
 PRICE_DIVISOR = 100_000          # Shopee stores VND * 100000
 IMAGE_BASE = "https://down-vn.img.susercontent.com/file/"
 PRODUCT_URL = "https://shopee.vn/product/{shopid}/{itemid}"
 SHOP_URL = "https://shopee.vn/shop/{shopid}"
 
-
-def dig(obj: Any, *path: Any, default: Any = None) -> Any:
-    for key in path:
-        if isinstance(obj, dict):
-            obj = obj.get(key)
-        elif isinstance(obj, list) and isinstance(key, int) and -len(obj) <= key < len(obj):
-            obj = obj[key]
-        else:
-            return default
-        if obj is None:
-            return default
-    return obj
-
-
-def _d(value: Any) -> dict:
-    """Value if it is a dict, else {} -- payload blocks sometimes arrive as [] or null."""
-    return value if isinstance(value, dict) else {}
-
-
-def _l(value: Any) -> list:
-    if isinstance(value, list):
-        return value
-    if isinstance(value, (str, int)) and value != "":
-        return [value]          # a lone value where a list was expected
-    return []
-
-
-def _s(value: Any) -> str | None:
-    if value is None or isinstance(value, (dict, list)):
-        return None
-    text = str(value).strip()
-    return text or None
-
-
-def first_pos(*values: Any) -> Any:
-    """First value that is a positive number. Shopee writes -1 for 'not set'
-    (e.g. range_min when the price is a single value) and 0 for 'no discount'."""
-    for value in values:
-        number = to_float(value)
-        if number is not None and number > 0:
-            return value
-    return None
-
-
-def first(*values: Any) -> Any:
-    for value in values:
-        if value is not None and value != "" and value != [] and value != {}:
-            return value
-    return None
-
-
-def deep_find(obj: Any, key: str, max_depth: int = 6) -> Any:
-    """First non-empty value stored under `key` anywhere in `obj` (breadth-first)."""
-    frontier = [obj]
-    for _ in range(max_depth):
-        nxt = []
-        for node in frontier:
-            if isinstance(node, dict):
-                if first(node.get(key)) is not None:
-                    return node[key]
-                nxt.extend(v for v in node.values() if isinstance(v, (dict, list)))
-            elif isinstance(node, list):
-                nxt.extend(v for v in node if isinstance(v, (dict, list)))
-        frontier = nxt
-    return None
+__all__ = [
+    "IMAGE_BASE",
+    "PRICE_DIVISOR",
+    "PRODUCT_URL",
+    "SHOP_URL",
+    "ShopeeRaw",
+    "_d",
+    "_l",
+    "_s",
+    "deep_find",
+    "dig",
+    "discount_pct",
+    "first",
+    "first_pos",
+    "image_url",
+    "pdp_item",
+    "to_float",
+    "to_int",
+    "to_price",
+    "to_seconds",
+    "ts_to_date",
+]
 
 
 def to_price(raw: Any) -> float | None:
@@ -101,25 +48,6 @@ def to_price(raw: Any) -> float | None:
         return round(value / PRICE_DIVISOR)
     except (TypeError, ValueError, OverflowError):
         return None
-
-
-def to_int(raw: Any) -> int | None:
-    if raw is None or isinstance(raw, bool):
-        return None
-    try:
-        return int(float(raw))
-    except (TypeError, ValueError, OverflowError):
-        return None
-
-
-def to_float(raw: Any) -> float | None:
-    if raw is None or isinstance(raw, bool):
-        return None
-    try:
-        value = float(raw)
-    except (TypeError, ValueError, OverflowError):
-        return None
-    return value if value == value and abs(value) != float("inf") else None
 
 
 def image_url(ref: Any) -> str | None:
@@ -160,11 +88,7 @@ def discount_pct(raw: Any) -> int | None:
 
 
 def pdp_item(payload: Any) -> dict | None:
-    """The item block of a get_pc payload, or None if Shopee refused us.
-
-    Shopee answers blocks with HTTP 200 + {"error": 1, "data": null}; that must
-    count as a failure, not as an empty product.
-    """
+    """The item block of a get_pc payload, or None if Shopee refused us."""
     if not isinstance(payload, dict) or payload.get("error"):
         return None
     item = dig(payload, "data", "item")
@@ -173,8 +97,7 @@ def pdp_item(payload: Any) -> dict | None:
 
 @dataclass
 class ShopeeRaw:
-    """The blocks of one raw product file, unpacked once and passed to every
-    parse_* function (instead of each re-reading raw["pdp"]["data"]...)."""
+    """The blocks of one raw product file, unpacked once."""
     raw: dict
     candidate: dict = field(default_factory=dict)
     basic: dict = field(default_factory=dict)      # the search card

@@ -1,35 +1,11 @@
-"""Lazada VN page data: where it lives and helpers to read it.
-
-Search page   https://www.lazada.vn/catalog/?q=<kw>&sort=popularity&page=N
-    With `&ajax=true` the same URL answers JSON:
-        mods.listItems[]      itemId, skuId, sellerId, name, priceShow, price,
-                              originalPrice, discount, ratingScore, review,
-                              itemSoldCntShow ("Đã bán 1.2k"), location, sellerName,
-                              brandName, image, itemUrl, inStock, sponsored flags
-        mainInfo.totalResults
-
-Product page  https://www.lazada.vn/products/<slug>-i<itemId>-s<skuId>.html
-    The server-rendered HTML carries `window.__moduleData__ = {...}` whose
-    `data.root.fields` holds everything the page shows:
-        product           title, brandName, desc (HTML), highlights, itemId
-        primaryKey        itemId, skuId
-        skuInfos{skuId}   price.salePrice.value, price.originalPrice.value, stock, image
-        productOption     skuBase.properties[] (name, values[] {vid, name, image}),
-                          skuBase.skus[] {skuId, propPath "pid:vid;pid:vid"}
-        review            ratings.average, ratings.rateCount, ratings.scores[]
-        seller            name, sellerId, url; sellerInfo.* (positive rating, ship on time)
-        specifications    [{features: {key: value}}]
-        tracking          pdt_* (sold count when published)
-
-The exact key names vary between Lazada releases; every reader below tries a
-list of candidate paths in order (see contracts/lazada.py) so a rename shows up
-in `ecommerce check-schema` instead of as blank cells.
-"""
+"""Lazada VN page data: where it lives and helpers to read it."""
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
 from typing import Any
+
+from ecommerce.platforms.common.helpers import _d, _l, _s, deep_find, dig, first, first_pos, to_float, to_int
 
 BASE = "https://www.lazada.vn"
 SEARCH_PATH = "/catalog/?q={kw}&sort={sort}&page={page}&ajax=true"
@@ -37,68 +13,26 @@ PRODUCT_URL = BASE + "/products/i{item_id}-s{sku_id}.html"
 PRODUCT_PATH = "/products/i{item_id}-s{sku_id}.html"
 PAGE_SIZE = 40
 
-
-def _d(v: Any) -> dict:
-    return v if isinstance(v, dict) else {}
-
-
-def _l(v: Any) -> list:
-    return v if isinstance(v, list) else []
-
-
-def dig(obj: Any, *keys: str) -> Any:
-    """dig(d, "a", "b") -> d["a"]["b"] or None; list indices as "0"."""
-    cur = obj
-    for k in keys:
-        if isinstance(cur, dict):
-            cur = cur.get(k)
-        elif isinstance(cur, list) and k.isdigit() and int(k) < len(cur):
-            cur = cur[int(k)]
-        else:
-            return None
-    return cur
-
-
-def first(*values: Any) -> Any:
-    for v in values:
-        if v not in (None, "", [], {}):
-            return v
-    return None
-
-
-_NUM = re.compile(r"-?\d+(?:[.,]\d+)?")
-
-
-def to_int(v: Any) -> int | None:
-    """'1.234.000 ₫' -> 1234000; 1234.0 -> 1234; 'abc' -> None."""
-    if v is None or v == "" or isinstance(v, bool):      # note: 0 == False, so test `is`
-        return None
-    if isinstance(v, (int, float)):
-        return int(v)
-    s = str(v).replace("\xa0", " ").strip()
-    digits = re.sub(r"[^\d]", "", s)
-    if not digits:
-        return None
-    # "1.234.000" / "1,234,000" are thousands separators; "4.5" is a decimal
-    if re.fullmatch(r"\d{1,3}(?:[.,]\d{3})+", s.split(" ")[0]):
-        return int(digits)
-    m = _NUM.search(s)
-    try:
-        return int(float(m.group(0).replace(",", "."))) if m else None
-    except ValueError:
-        return None
-
-
-def to_float(v: Any) -> float | None:
-    if v in (None, ""):
-        return None
-    if isinstance(v, (int, float)) and not isinstance(v, bool):
-        return float(v)
-    m = _NUM.search(str(v))
-    try:
-        return float(m.group(0).replace(",", ".")) if m else None
-    except ValueError:
-        return None
+__all__ = [
+    "BASE",
+    "PAGE_SIZE",
+    "PRODUCT_PATH",
+    "PRODUCT_URL",
+    "SEARCH_PATH",
+    "LazadaRaw",
+    "_d",
+    "_l",
+    "_s",
+    "deep_find",
+    "dig",
+    "first",
+    "first_pos",
+    "is_valid_product",
+    "sold_count",
+    "strip_html",
+    "to_float",
+    "to_int",
+]
 
 
 def sold_count(text: Any) -> int | None:

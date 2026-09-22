@@ -8,12 +8,13 @@ import logging
 from ecommerce.domain.candidate import LazadaCandidate
 from ecommerce.domain.dataset import Dataset
 from ecommerce.ingestion.raw_store import RunStore
-from ecommerce.platforms.base import PlatformAdapter
+from ecommerce.platforms.base import PlatformAdapter, register_platform
 from ecommerce.settings import AppConfig
 
 log = logging.getLogger(__name__)
 
 
+@register_platform("lazada")
 class LazadaAdapter(PlatformAdapter):
     name = "lazada"
     label = "Lazada"
