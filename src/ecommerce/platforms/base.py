@@ -10,11 +10,29 @@ line in the registry -- the pipeline does not change.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any
+from collections.abc import Callable
+from typing import Any, TypeVar
 
 from ecommerce.domain.dataset import Dataset
 from ecommerce.ingestion.raw_store import RunStore
 from ecommerce.settings import AppConfig, BrowserSettings
+
+TAdapter = TypeVar("TAdapter", bound=type["PlatformAdapter"])
+_REGISTRY: dict[str, type[PlatformAdapter]] = {}
+
+
+def register_platform(name: str | None = None) -> Callable[[TAdapter], TAdapter]:
+    """Decorator to register a PlatformAdapter subclass in the global registry."""
+    def decorator(cls: TAdapter) -> TAdapter:
+        key = (name or getattr(cls, "name", cls.__name__)).lower()
+        _REGISTRY[key] = cls
+        return cls
+    return decorator
+
+
+def get_registered_adapters() -> dict[str, type[PlatformAdapter]]:
+    """Returns copy of registered platform adapter classes."""
+    return dict(_REGISTRY)
 
 
 class PlatformAdapter(ABC):

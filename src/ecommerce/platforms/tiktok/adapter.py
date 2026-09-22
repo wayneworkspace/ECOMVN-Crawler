@@ -5,10 +5,11 @@ from __future__ import annotations
 from ecommerce.domain.candidate import TikTokCandidate
 from ecommerce.domain.dataset import Dataset
 from ecommerce.ingestion.raw_store import RunStore
-from ecommerce.platforms.base import PlatformAdapter
+from ecommerce.platforms.base import PlatformAdapter, register_platform
 from ecommerce.settings import AppConfig
 
 
+@register_platform("tiktok")
 class TikTokAdapter(PlatformAdapter):
     name = "tiktok"
     label = "TikTok Shop"
